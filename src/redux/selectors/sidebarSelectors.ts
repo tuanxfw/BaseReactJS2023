@@ -1,0 +1,1 @@
+export const getSidebarStatus = (state: any) => state.sidebar.isOpen;

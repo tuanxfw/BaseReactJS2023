@@ -1,0 +1,23 @@
+{
+    "appTitle": "Base 2023",
+    "appFooter": "@Base 2023",
+
+    "validate": {
+        "notEmpty": "Không được để trống!"
+    },
+
+    "message": {
+        "info": "Thông tin",
+        "success": "Thành công",
+        "warning": "Cảnh báo",
+        "error": "Lỗi",
+        "actionSuccess": "Thực hiện thành công!",
+        "exception": "Đã có lỗi xảy ra!"
+    },
+
+    "confirm": {
+        "title": "Xác nhận",
+        "yes": "Đồng ý",
+        "cancel": "Hủy"
+    }
+}
