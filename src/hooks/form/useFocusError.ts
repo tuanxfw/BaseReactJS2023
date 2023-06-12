@@ -14,10 +14,10 @@ export default function useFocusError(formName: string, errors: any) {
                 let element: any;
                 if (firstFieldError) {
                     try {
-                        element = document.evaluate(`//form[@name="${formName}"]//*[@name="${firstFieldError}"]`, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                        element = document.evaluate(`//form[@name="${formName}"]//*[@name="${firstFieldError}"]//input`, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
                         
                     } catch (error) {
-                        element = document.evaluate(`//form[@name="${formName}"]//*[@name="${firstFieldError}"]//input`, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+                        element = document.evaluate(`//form[@name="${formName}"]//*[@name="${firstFieldError}"]`, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
                     }
 
                     element.focus();
