@@ -23,16 +23,16 @@ const filterTreeNode = (input: any, event: any) => {
     .includes(input.toLowerCase());
 };
 
-const renderTreeOptions = (fieldOption: FieldOption, dataTree: Array<any>) => {
+const renderTreeOptions = (fieldOption: FieldOption, treeData: any = []) => {
   let tree = [];
 
-  if (dataTree?.length > 0) {
+  if (treeData?.length > 0) {
     const genElement = (tree: any) => {
       if (tree) {
         return tree.map((item: any) => {
           let name = item[fieldOption.label];
           let value = item[fieldOption.value];
-          let key = uuidv4();
+          let key = item[fieldOption.value]; //uuidv4();
 
           return (
             <TreeNode
@@ -48,7 +48,7 @@ const renderTreeOptions = (fieldOption: FieldOption, dataTree: Array<any>) => {
       }
     };
 
-    tree = genElement(dataTree);
+    tree = genElement(treeData);
   }
 
   return tree;
@@ -57,7 +57,7 @@ const renderTreeOptions = (fieldOption: FieldOption, dataTree: Array<any>) => {
 const TreeSelect = ({
   fieldOption,
   onChange,
-  showCheckedStrategy,
+  treeData,
   ...props
 }: CustomProps) => {
   const customOnChange = (value: any) => {
@@ -75,9 +75,12 @@ const TreeSelect = ({
   return (
     <AntdTreeSelect
       {...props}
+      style={{ ...props.style, width: "100%" }}
       onSelect={customOnSelect}
       onChange={customOnChange}
-    ></AntdTreeSelect>
+    >
+      {renderTreeOptions(fieldOption, treeData)}
+    </AntdTreeSelect>
   );
 };
 
@@ -91,8 +94,9 @@ TreeSelect.defaultProps = {
   treeDefaultExpandAll: false,
   multiple: false,
   treeCheckable: false,
-  showCheckedStrategy: "all",
+  showCheckedStrategy: SHOW_ALL,
   treeLine: { showLeafIcon: false },
   dropdownStyle: { maxHeight: 400, overflow: "auto" },
   filterTreeNode: filterTreeNode,
+  onChange: (value: any, item: any) => console.log({ value, item }),
 };

@@ -1,6 +1,7 @@
 import { CommonButton, DisplayBox } from "@components/CommonComponent";
 
 const DemoButton = () => {
+
   return (
     <DisplayBox title={"Button"} isOpen={false}>
       <CommonButton

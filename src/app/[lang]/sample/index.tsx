@@ -7,30 +7,31 @@ import DemoModal from "./components/DemoModal";
 import DemoInput from "./components/DemoInput";
 import DemoDatePicker from "./components/DemoDatePicker";
 import DemoSelect from "./components/DemoSelect";
+import { DisplayBox } from "@components/CommonComponent";
 
 const Index = (props: any) => {
   return (
     <Row>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoButton/>
+        <DemoButton />
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoMessage/>
+        <DemoMessage />
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoLoading/>
+        <DemoLoading />
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoModal/>
+        <DemoModal />
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoInput/>
+        <DemoInput />
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoDatePicker/>
+        <DemoDatePicker />
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-        <DemoSelect/>
+        <DemoSelect />
       </Col>
     </Row>
   );

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Button as AntdButton } from "antd";
 import type { ButtonProps } from "antd";
 import ButtonStyle from "@style/modules/ButtonStyle";
@@ -6,17 +7,26 @@ interface CustomProps extends ButtonProps {
   btnType?: "icon" | "text" | "iconText" | "actionTable";
 }
 
-const Button = ({ btnType, ...props }: CustomProps) => {
+const Button = forwardRef(({ btnType, ...props }: CustomProps, ref: any) => {
   if (btnType === "iconText") {
     return (
       <ButtonStyle>
-        <AntdButton {...props} className={(props.className || "") + ` ${btnType}`} />
+        <AntdButton
+          ref={ref}
+          {...props}
+          className={(props.className || "") + ` ${btnType}`}
+        />
       </ButtonStyle>
     );
   } else if (btnType === "actionTable") {
     return (
       <ButtonStyle>
-        <AntdButton {...props} className={(props.className || "")  + ` ${btnType}`} type="link"/>
+        <AntdButton
+          ref={ref}
+          {...props}
+          className={(props.className || "") + ` ${btnType}`}
+          type="link"
+        />
       </ButtonStyle>
     );
   }
@@ -24,10 +34,14 @@ const Button = ({ btnType, ...props }: CustomProps) => {
   // "icon" | "text"
   return (
     <ButtonStyle>
-      <AntdButton {...props} className={(props.className || "")  + ` ${btnType}`} />
+      <AntdButton
+        ref={ref}
+        {...props}
+        className={(props.className || "") + ` ${btnType}`}
+      />
     </ButtonStyle>
   );
-};
+});
 
 export default Button;
 

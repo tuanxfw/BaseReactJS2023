@@ -117,7 +117,7 @@ export default Notification;
 
 export const showMessage = (content: Content) => {
   if (!content.title) {
-    content.title = content.title || i18n.t(`common.message.${content.type}`);
+    content.title = content.title || i18n.t(`common:message.${content.type}`);
   }
 
   store.dispatch(createNotification(content));

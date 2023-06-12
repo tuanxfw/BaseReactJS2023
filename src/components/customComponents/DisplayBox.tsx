@@ -11,6 +11,7 @@ interface CustomProps extends CollapseProps {
   isOpen?: boolean;
   title?: string;
   children?: any;
+  forceRender?: boolean | undefined
 }
 
 const DisplayBox = (props: CustomProps) => {
@@ -30,7 +31,7 @@ const DisplayBox = (props: CustomProps) => {
         activeKey={[isOpen ? key.current : ""]}
         expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
       >
-        <Panel header={props.title} key={key.current} forceRender={true}>
+        <Panel header={props.title} key={key.current} forceRender={props.forceRender}>
           {props.children}
         </Panel>
       </Collapse>
@@ -42,4 +43,5 @@ export default DisplayBox;
 
 DisplayBox.defaultProps = {
   isOpen: true,
+  forceRender: true,
 };

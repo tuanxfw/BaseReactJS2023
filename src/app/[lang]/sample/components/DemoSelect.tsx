@@ -3,6 +3,7 @@ import {
   CommonLabel,
   DisplayBox,
   CommonSelect,
+  CommonTreeSelect,
 } from "@components/CommonComponent";
 import _ from "lodash";
 
@@ -19,14 +20,54 @@ const DemoSelect = () => {
     { value: 4, name1: "Dòng 4", name2: "Row4", name3: "4" },
   ];
 
+  const treeData = [
+    {
+      id: "1",
+      name: "1",
+      children: [
+        {
+          id: "1.1",
+          name: "1.1",
+        },
+        {
+          id: "1.2",
+          name: "1.2",
+        },
+      ],
+    },
+    {
+      id: "2",
+      name: "2",
+      children: [
+        {
+          id: "2.1",
+          name: "2.1",
+          children: [
+            {
+              id: "2.1.1",
+              name: "2.1.1",
+            },
+            {
+              id: "2.1.2",
+              name: "2.1.2",
+            },
+          ],
+        },
+        {
+          id: "2.2",
+          name: "2.2",
+        },
+      ],
+    },
+  ];
+
   const sampleFetchData = async (username: string = "Sam") => {
-  
-    let result = await fetch('https://randomuser.me/api/?results=20')
-    
+    let result = await fetch("https://randomuser.me/api/?results=20");
+
     let resultData = await result.json();
 
     return resultData.results;
-  }
+  };
 
   return (
     <>
@@ -88,6 +129,19 @@ const DemoSelect = () => {
               onChange={(value, item) => console.log({ value, item })}
             />
           </Col>
+
+          <Col
+            className="col-space"
+            {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
+          >
+            <CommonLabel>Tree select</CommonLabel>
+            <CommonTreeSelect
+              treeData={treeData}
+              fieldOption={{ value: "id", label: "name", child: "children" }}
+              onChange={(value, item) => console.log({ value, item })}
+            />
+          </Col>
+
         </Row>
       </DisplayBox>
     </>

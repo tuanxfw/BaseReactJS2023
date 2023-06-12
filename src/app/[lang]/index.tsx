@@ -8,7 +8,7 @@ function Index(props: any) {
 
   return (
     <div>
-      <Navigate to={`/${param.lang}/tester`} replace={true}/>
+      <Navigate to={`/${param.lang}/sample`} replace={true}/>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import {
 } from "@components/CommonComponent";
 
 const DemoInput = () => {
+
   return (
     <>
       <DisplayBox title={"Input"} isOpen={false}>

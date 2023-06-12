@@ -5,6 +5,7 @@ export { default as CommonTextArea} from "@components/input/TextArea";
 export { default as CommonInputPassword } from "@components/input/InputPassword";
 export { default as CommonDatePicker } from "@components/input/DatePicker";
 export { default as CommonSelect } from "@components/input/Select";
+export { default as CommonTreeSelect } from "@components/input/TreeSelect";
 export { default as CommonLabel } from "@components/customComponents/Label";
 export { default as CommonValidTooltip } from "@components/customComponents/ValidTooltip";
 export { default as CommonTooltip, openTooltip, closeTooltip } from "@components/customComponents/Tooltip";
