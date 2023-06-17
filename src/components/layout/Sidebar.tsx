@@ -32,7 +32,7 @@ function Sidebar() {
         title={
           <div className="title-sidebar">
             <div className="logo">
-              <img src={`${AppConfig.PUBLIC_URL}/images/logo.png`} />
+              <img src={`${AppConfig.VITE_PUBLIC_URL}/images/logo.png`} />
             </div>
             <Button type="text" onClick={onCloseSidebar}>
               <i className="fa-solid fa-xmark" />

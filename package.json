@@ -1,11 +1,16 @@
 {
-  "name": "vite-project",
+  "name": "core-fe",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "local:start": "env-cmd -f .env.local vite",
+    "dev:start": "env-cmd -f .env.development vite",
+    "dev:build": "vite build --mode development",
+    "uat:start": "env-cmd -f .env.staging vite",
+    "uat:build": "tsc && vite build --mode staging",
+    "product:start": "env-cmd -f .env.product vite",
+    "product:build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,6 +23,7 @@
     "i18next": "^22.5.1",
     "i18next-http-backend": "^2.2.1",
     "lodash": "^4.17.21",
+    "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
@@ -39,6 +45,7 @@
     "@types/react-dom": "^18.2.0",
     "@types/uuid": "^9.0.1",
     "@vitejs/plugin-react": "^3.1.0",
+    "env-cmd": "^10.1.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.2",
     "vite-plugin-pages": "^0.31.0"

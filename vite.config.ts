@@ -6,6 +6,7 @@ import { fileURLToPath, URL } from "url";
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode, ssrBuild }) => {
   const env = loadEnv(mode, process.cwd(), "VITE_");
+  console.log({env});
 
   return {
     resolve: {

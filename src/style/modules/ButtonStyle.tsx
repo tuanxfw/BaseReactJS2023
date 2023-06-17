@@ -2,10 +2,9 @@ import sizeLayout from "@style/abstracts/SizeLayout";
 import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
-const ButtonStyle = styled.div`
-  display: inline-block;
-  width: fit-content;
-  block-size: fit-content;
+const ButtonStyle = styled.span`
+  
+  
 
   .icon.ant-btn, .text.ant-btn, .iconText.ant-btn {
     background: ${getColor("button.background")};
@@ -18,8 +17,11 @@ const ButtonStyle = styled.div`
 
   .actionTable.ant-btn {
     color: ${getColor("button.background")};
-    width: 25px;
+    width: 22px;
+    height: 20px;
     font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
   .actionTable.ant-btn:hover, .actionTable.ant-btn:focus{
     //border-color: ${getColor("button.background")};

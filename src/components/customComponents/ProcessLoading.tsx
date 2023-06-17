@@ -12,14 +12,14 @@ const ProcessLoading = () => {
   const processLoadingValue = useSelector(getProcessLoadingValue);
 
   return (
-    <ProcessLoadingStyle
-      style={{ display: processLoadingValue > 0 ? "inherit" : "none" }}
-    >
-      
-      <Spin 
-      //indicator={<i className="fa-solid fa-spinner fa-spin-pulse "></i>}
-      />
-    </ProcessLoadingStyle>
+    <div style={{ display: processLoadingValue > 0 ? "inherit" : "none" }}>
+      <ProcessLoadingStyle
+      >
+        <Spin
+        //indicator={<i className="fa-solid fa-spinner fa-spin-pulse "></i>}
+        />
+      </ProcessLoadingStyle>
+    </div>
   );
 };
 

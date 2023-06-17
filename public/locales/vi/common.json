@@ -1,23 +1,46 @@
 {
-    "appTitle": "Base 2023",
-    "appFooter": "@Base 2023",
+  "appTitle": "Base 2023",
+  "appFooter": "@Base 2023",
 
-    "validate": {
-        "notEmpty": "Không được để trống!"
-    },
+  "validate": {
+    "notEmpty": "Không được để trống!"
+  },
 
-    "message": {
-        "info": "Thông tin",
-        "success": "Thành công",
-        "warning": "Cảnh báo",
-        "error": "Lỗi",
-        "actionSuccess": "Thực hiện thành công!",
-        "exception": "Đã có lỗi xảy ra!"
-    },
+  "message": {
+    "info": "Thông tin",
+    "success": "Thành công",
+    "warning": "Cảnh báo",
+    "error": "Lỗi",
+    "actionSuccess": "Thực hiện thành công!",
+    "exception": "Đã có lỗi xảy ra!",
+    "sessionLoginIsExpired": "Phiên đăng nhập đã hết hạn!"
+  },
 
-    "confirm": {
-        "title": "Xác nhận",
-        "yes": "Đồng ý",
-        "cancel": "Hủy"
-    }
+  "confirm": {
+    "title": "Xác nhận",
+    "yes": "Đồng ý",
+    "cancel": "Hủy"
+  },
+
+  "button": {
+    "search": "Tìm kiếm",
+    "insert": "Thêm mới",
+    "clone": "Sao chép",
+    "update": "Cập nhật",
+    "delete": "Xóa",
+    "view": "Chi tiết",
+    "save": "Lưu",
+    "sort": "Sắp xếp",
+    "close": "Đóng",
+    "cancel": "Hủy",
+    "exportReport": "Xuất báo cáo",
+    "exportExcel": "Xuất excel",
+    "export": "Xuất file",
+    "import": "Nạp file",
+    "finish": "Hoàn thành"
+  },
+
+  "errors": {
+    "exception": "Đã có lỗi xảy ra!"
+  }
 }

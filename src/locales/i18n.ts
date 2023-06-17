@@ -22,7 +22,7 @@ i18n
 
     backend: {
       // for all available options read the backend's repository readme file
-      loadPath: AppConfig.PUBLIC_URL + '/locales/{{lng}}/{{ns}}.json'
+      loadPath: AppConfig.VITE_PUBLIC_URL + '/locales/{{lng}}/{{ns}}.json'
     },
 
     interpolation: {
@@ -42,7 +42,7 @@ export const getCurrentLocale = (pathname: string): any => {
   let currentLocale;
 
   for (let index = 0; index < locales.length; index++) {
-    if (pathname.startsWith(`${AppConfig.PUBLIC_URL}/${locales[index].ns}/`)) {
+    if (pathname.startsWith(`${AppConfig.VITE_PUBLIC_URL}/${locales[index].ns}/`)) {
       currentLocale = locales[index];
       break;
     }
@@ -58,6 +58,6 @@ export const checkLocale = (currentLocation: Location) => {
 
   if (!locale) {
     //navigate(`/${locales[0]}${pathname}`)
-    window.location.href = `${AppConfig.PUBLIC_URL}/${locales[0].ns}${currentLocation.pathname}`;
+    window.location.href = `${AppConfig.VITE_PUBLIC_URL}/${locales[0].ns}${currentLocation.pathname}`;
   }
 };

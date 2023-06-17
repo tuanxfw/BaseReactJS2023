@@ -9,21 +9,24 @@ import NotFound from "@components/layout/NotFound";
 import CommonLayout from "@components/layout/CommonLayout";
 const Login = lazy(() => import("@components/authen/Login"));
 import { localStoreUtil } from "@utils/commonUtil";
+import {
+  CommonNotification,
+  CommonProcessLoading,
+} from "@components/CommonComponent";
 
 export function authen(Component: React.ComponentType) {
   return (props: any) => {
-
-    if (!localStoreUtil.checkLoginLocal()) {
-      return (
-        <Login/>
-      );
-    }
-
     return (
       <>
-        <CommonLayout>
-          <Component {...props} />
-        </CommonLayout>
+        <CommonNotification />
+        <CommonProcessLoading/>
+        {localStoreUtil.checkLoginLocal() ? (
+          <CommonLayout>
+            <Component {...props} />
+          </CommonLayout>
+        ) : (
+          <Login />
+        )}
       </>
     );
   };

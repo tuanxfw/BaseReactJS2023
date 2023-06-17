@@ -4,10 +4,12 @@ import {
   DisplayBox,
   CommonSelect,
   CommonTreeSelect,
+  CommonTree,
 } from "@components/CommonComponent";
 import _ from "lodash";
 
 const DemoSelect = () => {
+
   const data = [
     {
       value: 1,
@@ -71,7 +73,7 @@ const DemoSelect = () => {
 
   return (
     <>
-      <DisplayBox title={"Select"} isOpen={true}>
+      <DisplayBox title={"Select"} isOpen={false}>
         <Row>
           <Col
             className="col-space"
@@ -142,6 +144,17 @@ const DemoSelect = () => {
             />
           </Col>
 
+          <Col
+            className="col-space"
+            {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}
+          >
+            <CommonLabel>Tree select</CommonLabel>
+            <CommonTree
+              treeData={treeData}
+              fieldOption={{ value: "id", label: "name", child: "children" }}
+              onSelect={(value, item) => console.log({ value, item })}
+            />
+          </Col>
         </Row>
       </DisplayBox>
     </>

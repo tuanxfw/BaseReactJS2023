@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { CommonButton, CommonModal, DisplayBox } from "@components/CommonComponent";
-
+import { App } from 'antd';
 const DemoModal = () => {
   const [modal, setModal] = useState<any>(null);
 

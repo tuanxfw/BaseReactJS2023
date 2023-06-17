@@ -25,6 +25,22 @@ const vetc = {
     background: "#00a651",
     fontColor: "#ffffff",
   },
+  table: {
+    borderColor: "#00a651",
+    footer: {
+      fontColor: "#00a651",
+    },
+  },
+  notFound: {
+    background: "#c5c5c52d",
+  },
+  errorBoundary: {
+    background: "#c5c5c52d",
+    title: {
+      background: "red",
+      color: "#ffffff",
+    },
+  },
 };
 
 const theme = {

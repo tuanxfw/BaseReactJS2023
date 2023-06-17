@@ -17,14 +17,14 @@ const CommonTooltip = ({ title, children, ...props }: CustomProps) => {
   }
 
   return (
-    <div
+    <span
       onMouseEnter={openTooltip(title)}
       //onMouseMove={openTooltip(title)}
       onMouseLeave={closeTooltip}
       onMouseDown={closeTooltip}
     >
       {children}
-    </div>
+    </span>
   );
 };
 

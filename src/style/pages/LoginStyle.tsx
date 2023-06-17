@@ -9,7 +9,7 @@ const LoginStyle = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url(${AppConfig.PUBLIC_URL}/images/background.jpg);
+    background-image: url(${AppConfig.VITE_PUBLIC_URL}/images/background.jpg);
   }
 
   .left-layout {
@@ -29,7 +29,7 @@ const LoginStyle = styled.div`
         background-size: 300px 100px;
         background-repeat: no-repeat;
         background-position: bottom;
-        background-image: url(${AppConfig.PUBLIC_URL}/images/logo.png);
+        background-image: url(${AppConfig.VITE_PUBLIC_URL}/images/logo.png);
       }
     }
 

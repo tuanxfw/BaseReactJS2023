@@ -47,6 +47,6 @@ export default localStore;
 
 window.addEventListener('storage', (e) => {
     if (!e?.newValue && !checkLoginLocal()) {
-        window.location = window.location ;
+        window.location.reload();
     }
 });

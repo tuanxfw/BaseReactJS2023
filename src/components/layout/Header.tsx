@@ -55,7 +55,7 @@ function Header(props: any) {
             <div className="center-header">
               <img
                 className="logo-app"
-                src={`${AppConfig.PUBLIC_URL}/images/logo2.png`}
+                src={`${AppConfig.VITE_PUBLIC_URL}/images/logo2.png`}
               />
               <span className="title-app">{t("common:appTitle")}</span>
             </div>

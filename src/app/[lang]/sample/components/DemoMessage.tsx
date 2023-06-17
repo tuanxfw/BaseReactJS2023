@@ -5,6 +5,7 @@ import {
   DisplayBox,
 } from "@components/CommonComponent";
 
+
 const DemoMessage = () => {
   const onClick = (event: any) => {
     let type = event?.target.innerText;

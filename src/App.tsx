@@ -1,4 +1,5 @@
 import { Suspense, lazy, useLayoutEffect } from "react";
+import { App as AppAntd, Skeleton } from "antd";
 import routes from "~react-pages";
 import { useRoutes } from "react-router-dom";
 import { ConfigProvider } from "antd";
@@ -62,12 +63,14 @@ const App = () => {
 
   return (
     <ConfigProvider locale={locale?.antd}>
-      <QueryClientProvider client={queryClient}>
-        <Suspense fallback={<p>Loading...</p>}>
-          <ErrorBoundary>{route}</ErrorBoundary>
-        </Suspense>
-        <ReactQueryDevtoolsProduction initialIsOpen={false} />
-      </QueryClientProvider>
+      <AppAntd>
+        <QueryClientProvider client={queryClient}>
+          <Suspense fallback={<div><Skeleton active/></div>}>
+            <ErrorBoundary>{route}</ErrorBoundary>
+          </Suspense>
+          <ReactQueryDevtoolsProduction initialIsOpen={false} />
+        </QueryClientProvider>
+      </AppAntd>
     </ConfigProvider>
   );
 };

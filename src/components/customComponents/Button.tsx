@@ -24,6 +24,7 @@ const Button = forwardRef(({ btnType, ...props }: CustomProps, ref: any) => {
         <AntdButton
           ref={ref}
           {...props}
+          size="small"
           className={(props.className || "") + ` ${btnType}`}
           type="link"
         />

@@ -6,11 +6,13 @@ import {
   CommonInputText,
   CommonInputPassword,
   CommonValidTooltip,
+  showMessage,
 } from "@components/CommonComponent";
 import LoginStyle from "@style/pages/LoginStyle";
 import { useTranslation } from "react-i18next";
 import { localStoreUtil, yup, yupResolver } from "@utils/commonUtil";
 import { useForm, Controller } from "react-hook-form";
+import { useLogin } from "@hooks/fetch/useAuth";
 
 const Login = (props: any) => {
   const { t } = useTranslation(["login", "common"]);
@@ -34,17 +36,27 @@ const Login = (props: any) => {
     resolver: yupResolver(schema),
   });
 
+  const authn = useLogin();
+
   //#endregion
 
   //#region Method
   const login = async (data: any) => {
-    await getUserInfo(data);
-    window.location.reload();
+    try {
+      let result = await authn.mutateAsync(data);
+
+      localStoreUtil.setData("token", data);
+      window.location.reload();
+      
+    } catch (error) {
+      //console.error(error);
+      //showMessage({type: "error", message: t("common:errors.exception")});
+      showMessage({type: "error", message: t("common:errors.exception")});
+    }
   };
 
   const getUserInfo = async (data: any) => {
     localStoreUtil.setData("userInfo", data);
-    window.location.reload();
   };
   //#endregion
 

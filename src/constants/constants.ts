@@ -1,6 +1,14 @@
-export const AppConfig = {
-    PUBLIC_URL: import.meta.env.VITE_PUBLIC_URL,
-    APP_CODE: "Base",
+export const AppConfig: any = {
+    ...{
+        VITE_MODE: import.meta.env.VITE_MODE,
+        VITE_PUBLIC_URL: import.meta.env.VITE_PUBLIC_URL,
+        VITE_REALM: import.meta.env.VITE_REALM,
+        VITE_CLIENT: import.meta.env.VITE_CLIENT,
+        VITE_AUTH_URL_API: import.meta.env.VITE_AUTH_URL_API,
+        VITE_BUSINESS_URL_API: import.meta.env.VITE_BUSINESS_URL_API,
+        VITE_CLIENT_SECRET: import.meta.env.VITE_CLIENT_SECRET,
+    },
+    ...(window as any).globalConfig,
 };
 
 export const Format = {
@@ -28,3 +36,7 @@ export const Format = {
         THOUSAND: ",",
     }
 };
+
+export const ServicesConst = {
+    TIMEOUT_REST_API: undefined,
+}

@@ -7,9 +7,16 @@ import DemoModal from "./components/DemoModal";
 import DemoInput from "./components/DemoInput";
 import DemoDatePicker from "./components/DemoDatePicker";
 import DemoSelect from "./components/DemoSelect";
-import { DisplayBox } from "@components/CommonComponent";
+import DemoDataGrid from "./components/DemoDataGrid";
+import { useEffect } from "react";
+
 
 const Index = (props: any) => {
+  useEffect(() => {
+    //throw new Error("2");
+    
+  }, []);
+
   return (
     <Row>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
@@ -32,6 +39,9 @@ const Index = (props: any) => {
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
         <DemoSelect />
+      </Col>
+      <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
+        <DemoDataGrid />
       </Col>
     </Row>
   );
