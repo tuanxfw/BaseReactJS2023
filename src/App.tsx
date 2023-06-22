@@ -3,16 +3,27 @@ import { App as AppAntd, Skeleton } from "antd";
 import routes from "~react-pages";
 import { useRoutes } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundary from "@components/layout/ErrorBoundary";
 import NotFound from "@components/layout/NotFound";
 import dayjs from "dayjs";
 import i18n, { checkLocale, getCurrentLocale } from "@locales/i18n";
+import {
+  CommonNotification,
+  CommonProcessLoading,
+} from "@components/CommonComponent";
+// const ReactQueryDevtoolsProduction = lazy(() =>
+//   import("react-query/devtools/development").then((d) => ({
+//     default: d.ReactQueryDevtools,
+//   }))
+// );
 
 const ReactQueryDevtoolsProduction = lazy(() =>
-  import("react-query/devtools/development").then((d) => ({
-    default: d.ReactQueryDevtools,
-  }))
+  import("@tanstack/react-query-devtools/build/lib/index.prod.js").then(
+    (d) => ({
+      default: d.ReactQueryDevtools,
+    })
+  )
 );
 
 const queryClient = new QueryClient({
@@ -26,7 +37,6 @@ const queryClient = new QueryClient({
       refetchIntervalInBackground: false, //refetch lại ngay cả khi không focus vào ứng dụng
       staleTime: 1000 * 60 * 5, //thời gian cache
       onError: (error) => {
-        //handle lỗi
         console.error(error);
         //showError(error.message);
       },
@@ -63,14 +73,23 @@ const App = () => {
 
   return (
     <ConfigProvider locale={locale?.antd}>
-      <AppAntd>
-        <QueryClientProvider client={queryClient}>
-          <Suspense fallback={<div><Skeleton active/></div>}>
+      <QueryClientProvider client={queryClient}>
+        <AppAntd>
+          <Suspense
+            fallback={
+              <div>
+                <Skeleton active />
+              </div>
+            }
+          >
+            <CommonNotification />
+            <CommonProcessLoading />
             <ErrorBoundary>{route}</ErrorBoundary>
           </Suspense>
-          <ReactQueryDevtoolsProduction initialIsOpen={false} />
-        </QueryClientProvider>
-      </AppAntd>
+          {/* <ReactQueryDevtoolsProduction initialIsOpen={false} /> */}
+          <ReactQueryDevtoolsProduction />
+        </AppAntd>
+      </QueryClientProvider>
     </ConfigProvider>
   );
 };

@@ -1,6 +1,8 @@
 import { CommonButton, DisplayBox } from "@components/CommonComponent";
+import { useMyStore } from "..";
 
 const DemoButton = () => {
+  const { myStore, setMyStore } = useMyStore();
 
   return (
     <DisplayBox title={"Button"} isOpen={false}>
@@ -30,13 +32,20 @@ const DemoButton = () => {
       </CommonButton>
       <hr />
 
-      <CommonButton btnType="text">123</CommonButton>
+      <CommonButton
+        btnType="text"
+        onClick={() => {
+          setMyStore(myStore + 1);
+        }}
+      >
+        {myStore}
+      </CommonButton>
       <CommonButton btnType="text" disabled>
         123
       </CommonButton>
       <hr />
 
-      <CommonButton
+      {/* <CommonButton
         btnType="actionTable"
         icon={<i className="fa-solid fa-tents"></i>}
       />
@@ -48,7 +57,7 @@ const DemoButton = () => {
         disabled
         btnType="actionTable"
         icon={<i className="fa-solid fa-tents"></i>}
-      />
+      /> */}
     </DisplayBox>
   );
 };

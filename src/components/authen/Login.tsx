@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
 import { Button, Col, Row } from "antd";
 import {
   CommonForm,
@@ -12,7 +11,21 @@ import LoginStyle from "@style/pages/LoginStyle";
 import { useTranslation } from "react-i18next";
 import { localStoreUtil, yup, yupResolver } from "@utils/commonUtil";
 import { useForm, Controller } from "react-hook-form";
-import { useLogin } from "@hooks/fetch/useAuth";
+import { useLogin, useGetUserInfo } from "@hooks/fetch/useAuth";
+
+import { QueryCache } from "@tanstack/react-query";
+
+const queryCache = new QueryCache({
+  onError: (error) => {
+    console.log(error);
+  },
+  onSuccess: (data) => {
+    console.log(data);
+  },
+  onSettled: (data, error) => {
+    console.log(data, error);
+  },
+});
 
 const Login = (props: any) => {
   const { t } = useTranslation(["login", "common"]);
@@ -37,26 +50,112 @@ const Login = (props: any) => {
   });
 
   const authn = useLogin();
+  const getUserInfo = useGetUserInfo();
 
   //#endregion
 
   //#region Method
   const login = async (data: any) => {
     try {
-      let result = await authn.mutateAsync(data);
+      let tokenData = await authn.mutateAsync(data);
 
-      localStoreUtil.setData("token", data);
+      if (!tokenData) {
+        throw new Error(t("common:errors.exception") as string);
+      }
+      localStoreUtil.setData("token", tokenData);
+
+      // let userInfoData = await getUserInfo.refetch();
+      // if (!userInfoData) {
+      //   throw new Error(t("common:errors.exception") as string);
+      // }
+      // localStoreUtil.setData("userInfo", userInfoData);
+
+      let menu = [
+        {
+          id: "1",
+          name: "Menu 1",
+          path: "/sample",
+        },
+        {
+          id: "2",
+          name: "Menu 2",
+          children: [
+            {
+              id: "2.1",
+              name: "Menu 2.1",
+              path: "/form1",
+            },
+          ],
+        },
+        {
+          id: "3",
+          name: "Menu 3",
+          children: [
+            {
+              id: "3.1",
+              name: "Menu 3.1",
+              path: "/form1",
+            },
+            {
+              id: "3.2",
+              name: "Menu 3.2",
+              children: [
+                {
+                  id: "3.2.1",
+                  name: "Menu 3.2.1",
+                  path: "/form1",
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      let menuData = parseMenuData(menu);
+
+      localStoreUtil.setData("menu", {
+        tree: menu,
+        items: menuData.items,
+        subs: menuData.subs,
+      });
+
       window.location.reload();
-      
     } catch (error) {
       //console.error(error);
       //showMessage({type: "error", message: t("common:errors.exception")});
-      showMessage({type: "error", message: t("common:errors.exception")});
+      showMessage({ type: "error", message: t("common:errors.exception") });
     }
   };
 
-  const getUserInfo = async (data: any) => {
-    localStoreUtil.setData("userInfo", data);
+  const parseMenuData = (menuData: any[], parent = "") => {
+    let subs: any[] = [];
+    let items: any[] = [];
+
+    menuData.map((menu) => {
+      if (menu["children"]) {
+        let sub = { ...menu };
+        sub.parent = parent;
+        sub.type = "sub";
+        delete sub.children;
+
+        subs.push(sub);
+
+        let result = parseMenuData(menu.children, menu["id"]);
+        subs = subs.concat(result.subs);
+        items = items.concat(result.items);
+      } else {
+        let item = { ...menu };
+        item.parent = parent;
+        item.type = "item";
+
+        items.push(item);
+      }
+    });
+
+    return {
+      subs: subs,
+      items: items,
+    };
   };
   //#endregion
 

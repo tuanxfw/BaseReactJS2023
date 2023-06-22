@@ -17,8 +17,8 @@ function CommonLayout(props: any) {
           {props.children}
         </Body>
         <Footer />
+        <ToolTipStyle id="common-tooltip"></ToolTipStyle>
       </Layout>
-      <ToolTipStyle id="common-tooltip"></ToolTipStyle>
     </>
   );
 }

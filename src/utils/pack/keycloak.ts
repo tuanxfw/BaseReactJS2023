@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SSO, LOGOUT_SSO, USER_MANAGER } from "@constants/appPath";
+import { LOGIN, LOGIN_SSO, LOGOUT_SSO, USER_MANAGER, USER_INFO } from "@constants/appPath";
 import { AppConfig } from "@constants/constants";
 import { localStoreUtil } from "@utils/commonUtil";
 
@@ -14,6 +14,12 @@ function getRedirectUrl() {
 
 function getUrlLogin() {
     let template = VITE_AUTH_URL_API + LOGIN.replaceAll("{realm}", VITE_REALM);
+
+    return template;
+};
+
+function getUrlUserInfo() {
+    let template = VITE_AUTH_URL_API + USER_INFO.replaceAll("{realm}", VITE_REALM);
 
     return template;
 };
@@ -42,6 +48,7 @@ const keycloak = {
     getBasicAuthToken,
     getRedirectUrl,
     getUrlLogin,
+    getUrlUserInfo,
     getUrlLoginSSO,
     getUrlLogoutSSO,
     getUrlUserManager,

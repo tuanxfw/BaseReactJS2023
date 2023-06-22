@@ -11,9 +11,7 @@
     "success": "Thành công",
     "warning": "Cảnh báo",
     "error": "Lỗi",
-    "actionSuccess": "Thực hiện thành công!",
-    "exception": "Đã có lỗi xảy ra!",
-    "sessionLoginIsExpired": "Phiên đăng nhập đã hết hạn!"
+    "actionSuccess": "Thực hiện thành công!"
   },
 
   "confirm": {
@@ -41,6 +39,7 @@
   },
 
   "errors": {
-    "exception": "Đã có lỗi xảy ra!"
+    "exception": "Đã có lỗi xảy ra!",
+    "sessionLoginIsExpired": "Phiên đăng nhập đã hết hạn!"
   }
 }

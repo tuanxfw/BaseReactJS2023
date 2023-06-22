@@ -158,7 +158,7 @@ const genConfig = (configOverride?: ConfigRequest) => {
 
     const defaultHeader = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStoreUtil.getData("token")["access_token"] || "",
+        "Authorization": "Bearer " + localStoreUtil.getData("token")?.["access_token"] || "",
     };
     config.headers = { ...defaultHeader, ...configOverride?.headers };
 

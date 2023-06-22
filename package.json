@@ -11,12 +11,14 @@
     "uat:build": "tsc && vite build --mode staging",
     "product:start": "env-cmd -f .env.product vite",
     "product:build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "env-cmd -f .env.local vite preview"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tanstack/react-query": "^4.29.14",
+    "@tanstack/react-query-devtools": "^4.29.14",
     "antd": "^5.5.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
@@ -30,13 +32,13 @@
     "react-hook-form": "^7.43.9",
     "react-i18next": "^12.3.1",
     "react-number-format": "^5.2.2",
-    "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "react-router": "^6.11.2",
     "react-router-dom": "^6.11.2",
     "styled-components": "^6.0.0-rc.1",
     "uuid": "^9.0.0",
-    "yup": "^1.1.1"
+    "yup": "^1.1.1",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.194",

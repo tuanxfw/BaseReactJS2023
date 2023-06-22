@@ -1,7 +1,7 @@
 const sizeLayout = {
     headerHeight: "50px",
     breadcrumbHeight: "30px",
-    sidebarWidth: "300px",
+    sidebarWidth: "400px",
     bodyHeight: "",
     footerHeight: "30px",
 };

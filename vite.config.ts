@@ -21,6 +21,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         { find: '@redux', replacement: fileURLToPath(new URL('./src/redux', import.meta.url)) },
         { find: '@utils', replacement: fileURLToPath(new URL('./src/utils', import.meta.url)) },
         { find: '@restful', replacement: fileURLToPath(new URL('./src/restful', import.meta.url)) },
+        { find: '@interface', replacement: fileURLToPath(new URL('./src/interface', import.meta.url)) },
       ],
     },
     plugins: [

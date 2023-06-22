@@ -25,6 +25,7 @@
       "@redux/*": ["./src/redux/*"],
       "@utils/*": ["./src/utils/*"],
       "@restful/*": ["./src/restful/*"],
+      "@interface/*": ["./src/interface/*"],
       "@/*": ["./src/*"],
     }
   },

@@ -43,7 +43,7 @@ const DemoMessage = () => {
         onConfirm={() =>
           showMessage({
             type: "success",
-            message: "Thành công!",
+            message: "Việc ấy thực thi thành công!",
           })
         }
       >

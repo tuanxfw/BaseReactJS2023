@@ -9,12 +9,11 @@ import DemoDatePicker from "./components/DemoDatePicker";
 import DemoSelect from "./components/DemoSelect";
 import DemoDataGrid from "./components/DemoDataGrid";
 import { useEffect } from "react";
-
+import { create } from "zustand";
 
 const Index = (props: any) => {
   useEffect(() => {
     //throw new Error("2");
-    
   }, []);
 
   return (
@@ -47,4 +46,16 @@ const Index = (props: any) => {
   );
 };
 
-export default authen(Index);
+export default authen(author(Index));
+
+interface MyStore {
+  myStore: number
+  setMyStore: (input: number) => void
+}
+
+const useMyStore = create<MyStore>((set) => ({
+  myStore: 1,
+  setMyStore: (input: number) => set((state: any) => ({ myStore: input })),
+}));
+
+export { useMyStore };

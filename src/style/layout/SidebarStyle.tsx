@@ -3,6 +3,13 @@ import getColor from "@style/themes/Color";
 import styled, { createGlobalStyle } from "styled-components";
 
 const SidebarStyle = createGlobalStyle`
+  .ant-drawer-content-wrapper {
+    width: ${sizeLayout.sidebarWidth} !important;
+  }
+  .ant-drawer-body {
+    padding: 0px !important;
+  }
+
   .title-sidebar {
     display: flex;
     justify-content: space-between;
@@ -27,6 +34,8 @@ const SidebarStyle = createGlobalStyle`
       background-color: transparent !important;
     }
   }
+
+  
 `;
 
 export default SidebarStyle;

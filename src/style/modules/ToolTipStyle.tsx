@@ -2,7 +2,7 @@ import sizeLayout from "@style/abstracts/SizeLayout";
 import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
-const ToolTipStyle = styled.span`
+const ToolTipStyle = styled.div`
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 3px;
