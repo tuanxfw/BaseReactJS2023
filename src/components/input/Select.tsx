@@ -1,15 +1,7 @@
 import { forwardRef, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { v4 as uuidv4 } from "uuid";
-import {
-  Select as AntdSelect,
-  Col,
-  Row,
-  Divider,
-  Space,
-  Checkbox,
-  Spin,
-} from "antd";
+import { Select as AntdSelect, Col, Row, Divider, Space, Checkbox, Spin } from "antd";
 import type { SelectProps } from "antd";
 import _ from "lodash";
 import { CommonTooltip } from "@components/CommonComponent";
@@ -40,16 +32,12 @@ const filterSelectOption = (input: any, event: any) => {
   );
 };
 
-const renderOptions = (
-  fieldValue: string,
-  data: Array<any>,
-  columnOptions: Array<ColumnOption>
-) => {
-  let children: Array<any> = [];
+const renderOptions = (fieldValue: string, data: Array<any>, columnOptions: Array<ColumnOption>) => {
+  const children: Array<any> = [];
 
   //header
   if (_.some(columnOptions, (col) => !_.isEmpty(col.header))) {
-    let header = (
+    const header = (
       <Option key={uuidv4()} value="header" disabled>
         <Row className="select-options" key={uuidv4()}>
           {_.map(columnOptions, (col) => {
@@ -103,7 +91,7 @@ const renderOptions = (
               );
             })}
           </Row>
-        </Option>
+        </Option>,
       );
     }
   }
@@ -113,17 +101,7 @@ const renderOptions = (
 //#endregion
 
 const Select = forwardRef(
-  (
-    {
-      fieldValue,
-      datalist,
-      columnOptions,
-      isCheckAll,
-      onChange,
-      ...props
-    }: CustomProps,
-    ref: any
-  ) => {
+  ({ fieldValue, datalist, columnOptions, isCheckAll, onChange, ...props }: CustomProps, ref: any) => {
     //#region Hooks
     const { t } = useTranslation(["select"]);
     //#endregion
@@ -141,7 +119,7 @@ const Select = forwardRef(
       if (e.target.checked) {
         onChange(
           _.map(datalist, (obj) => obj[fieldValue]),
-          datalist
+          datalist,
         );
       } else {
         onChange([], []);
@@ -157,6 +135,7 @@ const Select = forwardRef(
           datalist={datalist}
           columnOptions={columnOptions}
           {...props}
+          ref={ref}
           onChange={customOnChange}
         />
       );
@@ -164,20 +143,19 @@ const Select = forwardRef(
 
     return (
       <StaticSelect
+        ref={ref}
         {...props}
         onChange={customOnChange}
         dropdownRender={
           isCheckAll
-            ? (menu) => (
+            ? (menu: any) => (
                 <>
                   {menu}
                   <Divider style={{ margin: "4px 0" }} />
                   <Space style={{ padding: "0 8px 4px" }}>
                     <Checkbox
                       checked={
-                        props.mode === "multiple" &&
-                        datalist?.length > 0 &&
-                        props.value?.length === datalist.length
+                        props.mode === "multiple" && datalist?.length > 0 && props.value?.length === datalist.length
                       }
                       onChange={onCheckAll}
                     >
@@ -192,10 +170,10 @@ const Select = forwardRef(
         {renderOptions(fieldValue, datalist, columnOptions)}
       </StaticSelect>
     );
-  }
+  },
 );
 
-const StaticSelect = (props: SelectProps) => {
+const StaticSelect = (props: any) => {
   return <AntdSelect style={{ width: "100%", ...props.style }} {...props} />;
 };
 
@@ -205,7 +183,7 @@ const LazySelect = ({ fieldValue, datalist, columnOptions, ...props }: any) => {
 
   useEffect(() => {
     const getDefaultData = async () => {
-      let defaultData = await datalist();
+      const defaultData = await datalist();
       setData(defaultData);
     };
     getDefaultData();
@@ -216,7 +194,7 @@ const LazySelect = ({ fieldValue, datalist, columnOptions, ...props }: any) => {
       setFetching(true);
       setData([]);
 
-      let newData = await datalist(value);
+      const newData = await datalist(value);
 
       setFetching(false);
       setData(newData);

@@ -1,33 +1,53 @@
-import React, { useEffect, useRef } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { FormHTMLAttributes, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import useFocusError from "@hooks/form/useFocusError";
 import useFocusFirstElement from "@hooks/form/useFocusFirstElement";
 import useConsoleLog from "@hooks/form/useConsoleLog";
 
-const Form = ({
-    errors: p_errors,
-    watch: p_watch,
-    ...props
-}: any) => {
-
-    const ref_nameForm = useRef(uuidv4())
-
-    useFocusFirstElement(ref_nameForm.current);
-    useFocusError(ref_nameForm.current, p_errors);
-    useConsoleLog(p_watch);
-
-    return (
-        <form
-            name={ref_nameForm.current}
-            autoComplete='off'
-            {...props}
-        />
-    );
+interface CustomProps extends FormHTMLAttributes<HTMLFormElement> {
+  errors?: any;
+  watch?: any;
 }
+
+const Form = ({ errors, watch, ...props }: CustomProps) => {
+  const refNameForm = useRef<string>(uuidv4());
+  const refClickedElement = useRef<any>(null);
+
+  useFocusFirstElement(refNameForm.current);
+  useFocusError(refNameForm.current, errors);
+  useConsoleLog(watch);
+
+  const onClickElementForm = (e: any) => {
+    const element = e.target;
+
+    if (element.tagName === "BUTTON") {
+      refClickedElement.current = element;
+    }
+  };
+
+  const onSubmit = (e: any) => {
+    const fakeEvent = { ...e };
+    if (!e?.nativeEvent?.submitter) {
+      //handle IOS
+      e.preventDefault();
+      fakeEvent.nativeEvent = { ...fakeEvent.nativeEvent };
+      fakeEvent.nativeEvent.submitter = refClickedElement.current;
+
+      if (props.onSubmit) props.onSubmit(fakeEvent);
+    } else {
+      if (props.onSubmit) props.onSubmit(e);
+    }
+  };
+
+  return (
+    <form name={refNameForm.current} autoComplete="off" {...props} onClick={onClickElementForm} onSubmit={onSubmit} />
+  );
+};
 
 export default Form;
 
 Form.defaultProps = {
-    watch: () => { }
-}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  watch: () => {},
+};

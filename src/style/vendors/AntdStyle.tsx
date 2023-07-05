@@ -1,5 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
-import getColor from "@style/themes/Color";
+import { createGlobalStyle } from "styled-components";
 
 const AntdStyle = createGlobalStyle`
     .header-select-options {

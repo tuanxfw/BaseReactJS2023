@@ -1,13 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { Tooltip } from "antd";
-
 interface CustomProps {
   title?: string | undefined;
   children?: any;
 }
 
-const CommonTooltip = ({ title, children, ...props }: CustomProps) => {
+const CommonTooltip = ({ title, children }: CustomProps) => {
   if (title) {
     return (
       <Tooltip title={title} mouseEnterDelay={0.03} mouseLeaveDelay={0}>
@@ -31,7 +28,7 @@ const CommonTooltip = ({ title, children, ...props }: CustomProps) => {
 export default CommonTooltip;
 
 export const openTooltip =
-  (title: string | undefined, x: number = 10, y: number = 0) =>
+  (title: string | undefined, x = 10, y = 0) =>
   (e: any) => {
     let content = e.target.innerText;
 
@@ -41,7 +38,7 @@ export const openTooltip =
 
     if (content.trim() === "") return;
 
-    let tooltip = document.getElementById("common-tooltip");
+    const tooltip = document.getElementById("common-tooltip");
 
     if (!tooltip) {
       return;
@@ -54,8 +51,8 @@ export const openTooltip =
     tooltip.style.left = e.pageX + x + "px";
   };
 
-export const closeTooltip = (e: any) => {
-  let tooltip = document.getElementById("common-tooltip");
+export const closeTooltip = () => {
+  const tooltip = document.getElementById("common-tooltip");
 
   if (!tooltip) {
     return;

@@ -5,11 +5,9 @@ import {
   CommonInputText,
   CommonInputNumber,
   CommonTextArea,
-  CommonInputPassword,
 } from "@components/CommonComponent";
 
 const DemoInput = () => {
-
   return (
     <>
       <DisplayBox title={"Input"} isOpen={false}>
@@ -22,7 +20,7 @@ const DemoInput = () => {
             <CommonInputText />
           </Col>
           <Col
-            className="col-space"
+            className="c"
             {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
           >
             <CommonLabel>Number</CommonLabel>
@@ -35,13 +33,13 @@ const DemoInput = () => {
             <CommonLabel>TextArea</CommonLabel>
             <CommonTextArea rows={3} />
           </Col>
-          <Col
+          {/* <Col
             className="col-space"
             {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
           >
             <CommonLabel>Password</CommonLabel>
             <CommonInputPassword autoComplete="off"/>
-          </Col>
+          </Col> */}
         </Row>
       </DisplayBox>
     </>

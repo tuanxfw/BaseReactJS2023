@@ -1,6 +1,5 @@
 import sizeLayout from "@style/abstracts/SizeLayout";
-import getColor from "@style/themes/Color";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const SidebarStyle = createGlobalStyle`
   .ant-drawer-content-wrapper {

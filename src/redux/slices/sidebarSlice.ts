@@ -1,22 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const sideBarSlice = createSlice({
-    name: 'sidebar',
-    initialState: {
-        isOpen: false,
-        data: {
-            openKeys: [],
-            selectedKeys: []
-        }
+  name: "sidebar",
+  initialState: {
+    isOpen: false,
+    data: {
+      openKeys: [],
+      selectedKeys: [],
     },
-    reducers: {
-        toggleSidebar: (state, action) => {
-            state.isOpen = action.payload;
-        },
-        setSidebarData: (state, action) => {
-            state.data = { ...state.data, ...action.payload }
-        },
+  },
+  reducers: {
+    toggleSidebar: (state, action) => {
+      state.isOpen = action.payload;
     },
+    setSidebarData: (state, action) => {
+      state.data = { ...state.data, ...action.payload };
+    },
+  },
 });
 
 export default sideBarSlice;

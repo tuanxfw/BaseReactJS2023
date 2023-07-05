@@ -1,6 +1,4 @@
 import LabelStyle from "@style/modules/LabelStyle";
-import React from "react";
-
 interface CustomProps {
   required?: boolean;
   children?: any;
@@ -9,10 +7,8 @@ interface CustomProps {
 const Label = (props: CustomProps) => {
   return (
     <LabelStyle>
-      <label>
-        {props.children}
-        {props.required ? <b>*</b> : null}
-      </label>
+      {props.children}
+      {props.required ? <b>*</b> : null}
     </LabelStyle>
   );
 };

@@ -8,7 +8,7 @@ const NotFound = () => {
   const [content, setContent] = useState<any>(<PageLoading />);
 
   useEffect(() => {
-    let idTimeout = setTimeout(() => {
+    const idTimeout = setTimeout(() => {
       setContent(<Page404 />);
     }, 3000);
 
@@ -24,20 +24,19 @@ export default NotFound;
 
 const PageLoading = () => {
   return (
-    <div>
+    <NotFoundStyle>
       <Skeleton active />
       <Divider />
       <Skeleton active />
       <Divider />
       <Skeleton active />
-    </div>
+    </NotFoundStyle>
   );
 };
 
 const Page404 = () => {
   const localtion = useLocation();
   const { t } = useTranslation(["page404"]);
-  
 
   return (
     <NotFoundStyle>

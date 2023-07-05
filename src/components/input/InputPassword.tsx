@@ -38,7 +38,7 @@ const InputPassword = forwardRef(
     };
 
     const customOnBlur = (e: any) => {
-      let value = e.target.value;
+      const value = e.target.value;
 
       if (autoTrim && _.toString(value) !== "" && value.trim() !== value) {
         if (onChange) onChange(value.trim());
@@ -48,7 +48,7 @@ const InputPassword = forwardRef(
     };
 
     const customOnKeyPress = (e: any) => {
-      let value = e.target.value;
+      const value = e.target.value;
 
       if (e.key === "Enter" && autoTrim) {
         if (onChange) onChange(value.trim());

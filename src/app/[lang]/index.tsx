@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { authen, author } from "@routes/privateRoutes";
-import { Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { authen } from "@routes/privateRoutes";
 
-function Index(props: any) {
+function Index() {
   const param = useParams();
 
   return (
     <div>
-      <Navigate to={`/${param.lang}/sample`} replace={true}/>
+      <Navigate to={`/${param.lang}/sample`} replace={true} />
     </div>
   );
 }

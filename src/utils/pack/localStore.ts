@@ -2,48 +2,50 @@ import { AppConfig } from "@constants/constants";
 import _ from "lodash";
 
 function checkLoginLocal(): boolean {
-    const store = localStorage.getItem(AppConfig.VITE_CLIENT);
+  const store = localStorage.getItem(AppConfig.VITE_CLIENT);
 
-    if (store) {
-        return true;
-    }
+  if (store) {
+    return true;
+  }
 
-    return false;
-};
+  return false;
+}
 
 function setData(key: string, value: any) {
-    let store: any = JSON.parse(_.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}");
+  const store: any = JSON.parse(
+    _.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}"
+  );
 
-    store[key] = value;
+  store[key] = value;
 
-    localStorage.setItem(AppConfig.VITE_CLIENT, JSON.stringify(store));
-};
+  localStorage.setItem(AppConfig.VITE_CLIENT, JSON.stringify(store));
+}
 
 function getData(key: string) {
-    let store: any = localStorage.getItem(AppConfig.VITE_CLIENT);
+  const store: any = localStorage.getItem(AppConfig.VITE_CLIENT);
 
-    let result = _.get(JSON.parse(_.toString(store)), key, {});
+  const result = _.get(JSON.parse(_.toString(store)), key, {});
 
-    return result;
-};
+  return result;
+}
 
 function clearData() {
-    localStorage.setItem(AppConfig.VITE_CLIENT, "");
+  localStorage.setItem(AppConfig.VITE_CLIENT, "");
 
-    window.dispatchEvent(new Event("storage"));
-};
+  window.dispatchEvent(new Event("storage"));
+}
 
 const localStore = {
-    checkLoginLocal,
-    setData,
-    getData,
-    clearData
+  checkLoginLocal,
+  setData,
+  getData,
+  clearData,
 };
 
 export default localStore;
 
-window.addEventListener('storage', (e) => {
-    if (!e?.newValue && !checkLoginLocal()) {
-        window.location.reload();
-    }
+window.addEventListener("storage", (e) => {
+  if (!e?.newValue && !checkLoginLocal()) {
+    window.location.reload();
+  }
 });

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import _ from "lodash";
 import { Input, Tree as AntdTree } from "antd";
 import type { TreeProps } from "antd";
-import type { DataNode } from "antd/es/tree";
 import { useTranslation } from "react-i18next";
 import { stringUtil } from "@utils/commonUtil";
 import TreeStyle from "@style/modules/TreeStyle";
@@ -21,15 +20,8 @@ interface CustomProps extends Omit<TreeProps, "treeData" | "onSelect"> {
 }
 
 const { Search } = Input;
-const { TreeNode } = AntdTree;
 
-const Tree = ({
-  showSearch,
-  fieldOption,
-  treeData,
-  onSelect,
-  ...props
-}: CustomProps) => {
+const Tree = ({ showSearch, fieldOption, treeData, onSelect, ...props }: CustomProps) => {
   //#region Hooks
   const { t } = useTranslation(["common"]);
 
@@ -38,9 +30,7 @@ const Tree = ({
   const flatList = useRef<any[]>([]);
   const searchCondition = useRef("");
 
-  const [expandedKeys, setExpandedKeys] = useState<any>(
-    props.defaultExpandedKeys
-  );
+  const [expandedKeys, setExpandedKeys] = useState<any>(props.defaultExpandedKeys);
   const [autoExpandParent, setAutoExpandParent] = useState<boolean>(true);
 
   useEffect(() => {
@@ -50,7 +40,7 @@ const Tree = ({
     parseTreeToList(treeData);
 
     if (props.defaultExpandAll) {
-      let expandedKeys: any[] = [];
+      const expandedKeys: any[] = [];
 
       dataList.current.map((item) => {
         expandedKeys.push(item[fieldOption.value]);
@@ -63,18 +53,11 @@ const Tree = ({
   //#endregion Method
   const genTreeHighLight = (data: any): any => {
     return data.map((item: any) => {
-      const index = item[fieldOption.label]
-        .toLowerCase()
-        .indexOf(searchCondition.current.toLowerCase());
+      const index = item[fieldOption.label].toLowerCase().indexOf(searchCondition.current.toLowerCase());
 
       const beforeStr = item[fieldOption.label].substring(0, index);
-      const centerStr = item[fieldOption.label].slice(
-        index,
-        index + searchCondition.current.length
-      );
-      const afterStr = item[fieldOption.label].slice(
-        index + searchCondition.current.length
-      );
+      const centerStr = item[fieldOption.label].slice(index, index + searchCondition.current.length);
+      const afterStr = item[fieldOption.label].slice(index + searchCondition.current.length);
 
       const title =
         index > -1 ? (
@@ -131,12 +114,7 @@ const Tree = ({
       const node = tree[i];
 
       if (node[fieldOption.child]) {
-        if (
-          _.some(
-            node[fieldOption.child],
-            (item) => item[fieldOption.value] === value
-          )
-        ) {
+        if (_.some(node[fieldOption.child], (item) => item[fieldOption.value] === value)) {
           parentKey = node[fieldOption.value];
         } else if (getParentKey(value, node[fieldOption.child])) {
           parentKey = getParentKey(value, node[fieldOption.child]);
@@ -149,8 +127,8 @@ const Tree = ({
   const filter = (condition: string) => {
     searchCondition.current = condition;
 
-    let data = dataList.current;
-    let tree = treeData;
+    const data = dataList.current;
+    const tree = treeData;
 
     if (condition === "") {
       setExpandedKeys([]);
@@ -158,7 +136,7 @@ const Tree = ({
       return;
     }
 
-    let expandedKeys: any[] = [];
+    const expandedKeys: any[] = [];
 
     _.map(data, (obj) => {
       if (stringUtil.compareString(condition, obj[fieldOption.label])) {
@@ -186,14 +164,11 @@ const Tree = ({
   }, 300);
 
   const onCustomSelect = (value: any, e: any) => {
-    let nodeKey = e?.node?.key;
+    const nodeKey = e?.node?.key;
     let node = null;
 
     if (nodeKey) {
-      node = _.find(
-        flatList.current,
-        (obj) => obj[fieldOption.value] === nodeKey
-      );
+      node = _.find(flatList.current, (obj) => obj[fieldOption.value] === nodeKey);
     }
 
     if (onSelect) {
@@ -237,8 +212,6 @@ Tree.defaultProps = {
   checkable: false,
   treeData: [],
   showLine: { showLeafIcon: false },
-  onSelect: (selectedKeys: any, node: any, e: any) =>
-    console.info("onSelect", { selectedKeys, node, e }),
-  onCheck: (checkedKeys: any, node: any, e: any) =>
-    console.info("onCheck", { checkedKeys, node, e }),
+  onSelect: (selectedKeys: any, node: any, e: any) => console.info("onSelect", { selectedKeys, node, e }),
+  onCheck: (checkedKeys: any, node: any, e: any) => console.info("onCheck", { checkedKeys, node, e }),
 };

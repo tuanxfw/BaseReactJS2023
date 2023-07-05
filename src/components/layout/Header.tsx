@@ -7,7 +7,7 @@ import { AppConfig } from "@constants/constants";
 import { openSidebar } from "@components/layout/Sidebar";
 import { localStoreUtil } from "@utils/commonUtil";
 
-function Header(props: any) {
+function Header() {
   const { t } = useTranslation(["header", "common"]);
 
   const actions: MenuProps["items"] = [
@@ -53,10 +53,7 @@ function Header(props: any) {
               </Button>
             </div>
             <div className="center-header">
-              <img
-                className="logo-app"
-                src={`${AppConfig.VITE_PUBLIC_URL}/images/logo2.png`}
-              />
+              <img className="logo-app" src={`${AppConfig.VITE_PUBLIC_URL}/images/logo2.png`} alt="" />
               <span className="title-app">{t("common:appTitle")}</span>
             </div>
             <div className="right-header">

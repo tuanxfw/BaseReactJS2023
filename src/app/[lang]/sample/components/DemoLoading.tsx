@@ -9,7 +9,7 @@ import {
 import { Col, Row } from "antd";
 
 const DemoLoading = () => {
-  const onClick = (event: any) => {
+  const onClick = () => {
     openProcessLoading();
 
     setTimeout(() => {
@@ -24,20 +24,18 @@ const DemoLoading = () => {
       </CommonButton>
       <hr />
       <Row>
-        <Col {...{xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12}}>
+        <Col {...{ xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12 }}>
           <WrappedLoading spinning={true}>
             <CommonInputText />
           </WrappedLoading>
         </Col>
-        
-        <Col {...{xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12}}>
+
+        <Col {...{ xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12 }}>
           <WrappedLoading spinning={true}>
             <CommonInputText />
           </WrappedLoading>
         </Col>
       </Row>
-
-      
     </DisplayBox>
   );
 };

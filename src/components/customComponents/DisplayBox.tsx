@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState, useRef } from "react";
 import { Collapse } from "antd";
-import type { CollapseProps} from "antd";
-import { CaretRightOutlined } from '@ant-design/icons';
+import type { CollapseProps } from "antd";
+import { CaretRightOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from "uuid";
 import DisplayBoxStyle from "@style/modules/DisplayBoxStyle";
 
@@ -11,7 +11,7 @@ interface CustomProps extends CollapseProps {
   isOpen?: boolean;
   title?: string;
   children?: any;
-  forceRender?: boolean | undefined
+  forceRender?: boolean | undefined;
 }
 
 const DisplayBox = (props: CustomProps) => {
@@ -29,9 +29,15 @@ const DisplayBox = (props: CustomProps) => {
         onChange={() => setIsOpen(!isOpen)}
         size="small"
         activeKey={[isOpen ? key.current : ""]}
-        expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+        expandIcon={({ isActive }) => (
+          <CaretRightOutlined rotate={isActive ? 90 : 0} />
+        )}
       >
-        <Panel header={props.title} key={key.current} forceRender={props.forceRender}>
+        <Panel
+          header={props.title}
+          key={key.current}
+          forceRender={props.forceRender}
+        >
           {props.children}
         </Panel>
       </Collapse>

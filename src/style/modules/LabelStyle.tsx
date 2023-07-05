@@ -1,8 +1,6 @@
-import sizeLayout from "@style/abstracts/SizeLayout";
-import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
-const LabelStyle = styled.div`
+const LabelStyle = styled.label`
   margin-bottom: 0px;
   font-weight: 500;
 

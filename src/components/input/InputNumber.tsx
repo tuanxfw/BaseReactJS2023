@@ -19,10 +19,11 @@ interface CustomProps
 }
 
 const InputNumber = forwardRef(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ onChange, fieldValue, ...props }: CustomProps, ref: any) => {
     const onValueChange = (values: NumberFormatValues) => {
       if (onChange) {
-        let value = fieldValue ? values[fieldValue] : values;
+        const value = fieldValue ? values[fieldValue] : values;
         onChange(value || "");
       }
     };
@@ -38,13 +39,13 @@ InputNumber.defaultProps = {
   thousandSeparator: Format.NUMBER_SEPARATOR.THOUSAND,
   fieldValue: "value",
   customInput: Input,
-  onChange: (value) => console.log(value)
+  onChange: (value) => console.log(value),
 };
 
 export const exceptionChar =
   (chars: Array<string> = []) =>
   (values: NumberFormatValues) => {
-    let value = _.toString(values["value"]);
+    const value = _.toString(values["value"]);
 
     for (let i = 0; i < chars.length; i++) {
       const char = chars[i];

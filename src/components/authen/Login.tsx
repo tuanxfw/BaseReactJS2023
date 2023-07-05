@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Button, Col, Row } from "antd";
 import {
   CommonForm,
@@ -11,23 +10,9 @@ import LoginStyle from "@style/pages/LoginStyle";
 import { useTranslation } from "react-i18next";
 import { localStoreUtil, yup, yupResolver } from "@utils/commonUtil";
 import { useForm, Controller } from "react-hook-form";
-import { useLogin, useGetUserInfo } from "@hooks/fetch/useAuth";
+import { useLogin } from "@hooks/fetch/useAuth";
 
-import { QueryCache } from "@tanstack/react-query";
-
-const queryCache = new QueryCache({
-  onError: (error) => {
-    console.log(error);
-  },
-  onSuccess: (data) => {
-    console.log(data);
-  },
-  onSettled: (data, error) => {
-    console.log(data, error);
-  },
-});
-
-const Login = (props: any) => {
+const Login = () => {
   const { t } = useTranslation(["login", "common"]);
 
   const schema = yup.object({
@@ -40,24 +25,20 @@ const Login = (props: any) => {
     control,
     watch,
     handleSubmit,
-    getValues,
-    setValue,
-    reset,
-    formState: { errors, isDirty, defaultValues },
+    formState: { errors },
   } = useForm<any>({
     defaultValues: {},
     resolver: yupResolver(schema),
   });
 
   const authn = useLogin();
-  const getUserInfo = useGetUserInfo();
 
   //#endregion
 
   //#region Method
   const login = async (data: any) => {
     try {
-      let tokenData = await authn.mutateAsync(data);
+      const tokenData = await authn.mutateAsync(data);
 
       if (!tokenData) {
         throw new Error(t("common:errors.exception") as string);
@@ -70,7 +51,7 @@ const Login = (props: any) => {
       // }
       // localStoreUtil.setData("userInfo", userInfoData);
 
-      let menu = [
+      const menu = [
         {
           id: "1",
           name: "Menu 1",
@@ -111,7 +92,7 @@ const Login = (props: any) => {
         },
       ];
 
-      let menuData = parseMenuData(menu);
+      const menuData = parseMenuData(menu);
 
       localStoreUtil.setData("menu", {
         tree: menu,
@@ -133,18 +114,18 @@ const Login = (props: any) => {
 
     menuData.map((menu) => {
       if (menu["children"]) {
-        let sub = { ...menu };
+        const sub = { ...menu };
         sub.parent = parent;
         sub.type = "sub";
         delete sub.children;
 
         subs.push(sub);
 
-        let result = parseMenuData(menu.children, menu["id"]);
+        const result = parseMenuData(menu.children, menu["id"]);
         subs = subs.concat(result.subs);
         items = items.concat(result.items);
       } else {
-        let item = { ...menu };
+        const item = { ...menu };
         item.parent = parent;
         item.type = "item";
 
@@ -160,7 +141,7 @@ const Login = (props: any) => {
   //#endregion
 
   //#region Event
-  const onLogin = (data: any, event: any) => {
+  const onLogin = (data: any) => {
     login(data);
   };
   //#endregion
@@ -168,34 +149,22 @@ const Login = (props: any) => {
   return (
     <LoginStyle>
       <Row className="login-page">
-        <Col
-          {...{ xxl: 18, xl: 16, lg: 14, md: 10, sm: 6, xs: 0 }}
-          className="left-layout"
-        ></Col>
+        <Col {...{ xxl: 18, xl: 16, lg: 14, md: 10, sm: 6, xs: 0 }} className="left-layout"></Col>
 
-        <Col
-          {...{ xxl: 6, xl: 8, lg: 10, md: 14, sm: 18, xs: 24 }}
-          className="right-layout"
-        >
+        <Col {...{ xxl: 6, xl: 8, lg: 10, md: 14, sm: 18, xs: 24 }} className="right-layout">
           <Row>
             <Col md={24} className="login-title">
               <div className="logo-app" />
               <h2>{t("common:appTitle")}</h2>
             </Col>
             <Col md={24} className="login-form">
-              <CommonForm
-                errors={errors}
-                watch={watch}
-                onSubmit={handleSubmit(onLogin)}
-              >
+              <CommonForm errors={errors} watch={watch} onSubmit={handleSubmit(onLogin)}>
                 <Controller
                   control={control}
                   name="username"
                   render={({ fieldState, field }) => (
                     <>
-                      <CommonValidTooltip>
-                        {fieldState.error?.message}
-                      </CommonValidTooltip>
+                      <CommonValidTooltip>{fieldState.error?.message}</CommonValidTooltip>
                       <CommonInputText
                         {...field}
                         placeholder={t("username") as string}
@@ -212,9 +181,7 @@ const Login = (props: any) => {
                   name="password"
                   render={({ fieldState, field }) => (
                     <>
-                      <CommonValidTooltip>
-                        {fieldState.error?.message}
-                      </CommonValidTooltip>
+                      <CommonValidTooltip>{fieldState.error?.message}</CommonValidTooltip>
                       <CommonInputPassword
                         {...field}
                         placeholder={t("username") as string}

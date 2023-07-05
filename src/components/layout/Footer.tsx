@@ -13,7 +13,7 @@ function Footer() {
   const { t } = useTranslation(["common"]);
 
   const genLangItem = (): MenuProps["items"] => {
-    let langItem = dictionary.map((item) => {
+    const langItem = dictionary.map((item) => {
       return {
         key: item.ns,
         label: item.name,

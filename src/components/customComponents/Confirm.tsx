@@ -15,17 +15,19 @@ const Confirm = (props: CustomeProps) => {
     }
 
     setTimeout(() => {
-      let btn: any = document.evaluate(
+      const btn: any = document.evaluate(
         '//*[@class="ant-popconfirm-buttons"]/button[2]',
         document,
         null,
         XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
+        null,
       ).singleNodeValue;
 
       try {
         btn.focus();
-      } catch (error) {}
+      } catch (error) {
+        /* empty */
+      }
     }, 500);
   };
 

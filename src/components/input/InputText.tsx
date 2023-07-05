@@ -38,7 +38,7 @@ const InputText = forwardRef(
     };
 
     const customOnBlur = (e: any) => {
-      let value = e.target.value;
+      const value = e.target.value;
 
       if (autoTrim && _.toString(value) !== "" && value.trim() !== value) {
         if (onChange) onChange(value.trim());
@@ -48,7 +48,7 @@ const InputText = forwardRef(
     };
 
     const customOnKeyPress = (e: any) => {
-      let value = e.target.value;
+      const value = e.target.value;
 
       if (e.key === "Enter" && autoTrim) {
         if (onChange) onChange(value.trim());
@@ -76,5 +76,5 @@ InputText.defaultProps = {
   autoTrim: true,
   autoUpper: false,
   autoLower: false,
-  onChange: (value) => console.log(value)
+  onChange: (value) => console.log(value),
 };

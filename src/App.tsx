@@ -1,8 +1,8 @@
-import { Suspense, lazy, useLayoutEffect } from "react";
-import { App as AppAntd, Skeleton } from "antd";
+// eslint-disable-next-line import/no-unresolved
 import routes from "~react-pages";
+import { Suspense, lazy, useLayoutEffect } from "react";
+import { App as AppAntd, Skeleton , ConfigProvider } from "antd";
 import { useRoutes } from "react-router-dom";
-import { ConfigProvider } from "antd";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundary from "@components/layout/ErrorBoundary";
 import NotFound from "@components/layout/NotFound";

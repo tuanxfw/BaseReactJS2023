@@ -1,17 +1,20 @@
-import sizeLayout from "@style/abstracts/SizeLayout";
 import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
 const ButtonStyle = styled.span`
-  
-  
+  .ant-btn > * {
+    pointer-events: none;
+  }
 
-  .icon.ant-btn, .text.ant-btn, .iconText.ant-btn {
+  .icon.ant-btn,
+  .text.ant-btn,
+  .iconText.ant-btn {
     background: ${getColor("button.background")};
     color: ${getColor("button.fontColor")};
-    
   }
-  .icon.ant-btn:disabled, .text.ant-btn:disabled, .iconText.ant-btn:disabled {
+  .icon.ant-btn:disabled,
+  .text.ant-btn:disabled,
+  .iconText.ant-btn:disabled {
     opacity: 0.7;
   }
 
@@ -23,11 +26,12 @@ const ButtonStyle = styled.span`
     margin-top: 4px;
     margin-bottom: 4px;
   }
-  .actionTable.ant-btn:hover, .actionTable.ant-btn:focus{
+  .actionTable.ant-btn:hover,
+  .actionTable.ant-btn:focus {
     //border-color: ${getColor("button.background")};
     box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
   }
-  .actionTable.ant-btn:disabled{
+  .actionTable.ant-btn:disabled {
     opacity: 0.2;
   }
 

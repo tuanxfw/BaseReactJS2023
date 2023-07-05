@@ -11,7 +11,7 @@ interface CustomProps extends ModalProps {
 }
 
 const Modal = (Component: React.ComponentType) => {
-  return ({ options, title, ...props }: CustomProps) => {
+  const CustomModal = ({ options, title, ...props }: CustomProps) => {
     const [open, setOpen] = useState<boolean>(true);
     const [disabled, setDisabled] = useState(true);
     const [bounds, setBounds] = useState({
@@ -25,23 +25,20 @@ const Modal = (Component: React.ComponentType) => {
     const idRef = useRef("modal" + uuidv4());
 
     const onClose = () => {
-    
-      let xpath = `//*[@id="${idRef.current}"]//button[contains(@class, "close-modal")]`;
-      let element: any = document.evaluate(
+      const xpath = `//*[@id="${idRef.current}"]//button[contains(@class, "close-modal")]`;
+      const element: any = document.evaluate(
         xpath,
         document,
         null,
         XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
+        null,
       ).singleNodeValue;
 
       if (element) {
         element?.click();
-      }
-      else {
+      } else {
         close();
       }
-      
     };
 
     const onStart = (_event: DraggableEvent, uiData: DraggableData) => {
@@ -83,11 +80,7 @@ const Modal = (Component: React.ComponentType) => {
         onCancel={onClose}
         footer={[]}
         modalRender={(modal) => (
-          <Draggable
-            disabled={disabled}
-            bounds={bounds}
-            onStart={(event, uiData) => onStart(event, uiData)}
-          >
+          <Draggable disabled={disabled} bounds={bounds} onStart={(event, uiData) => onStart(event, uiData)}>
             <ModalStyle id={idRef.current} ref={draggleRef}>
               {modal}
             </ModalStyle>
@@ -99,6 +92,7 @@ const Modal = (Component: React.ComponentType) => {
       </AntdModal>
     );
   };
+  return CustomModal;
 };
 
 export default Modal;

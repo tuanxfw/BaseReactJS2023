@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 function Index(props: any) {
-  const param = useParams();
   // {
   //   console.log("props", props);
   // }

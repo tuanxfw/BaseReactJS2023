@@ -1,15 +1,7 @@
-import {
-  CommonButton,
-  CommonDataGrid,
-  CommonTooltip,
-  DisplayBox,
-} from "@components/CommonComponent";
+import { CommonButton, CommonDataGrid, CommonTooltip, DisplayBox } from "@components/CommonComponent";
 import type { ColumnsType } from "@components/CommonComponent";
-import date from "@utils/pack/date";
 import { Divider } from "antd";
-import { size } from "lodash";
-
-import { v4 as uuidv4, v1 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 const DemoDataGrid = () => {
   const data: any[] = [];
@@ -29,13 +21,13 @@ const DemoDataGrid = () => {
     });
   }
 
-  let columns: ColumnsType = [
+  const columns: ColumnsType = [
     {
       key: uuidv4(),
       title: "#",
       dataIndex: "#",
       width: 70,
-      render: (cell: any, row: any, index) => <div>{index}</div>,
+      render: (_cell: any, _row: any, index) => <div>{index}</div>,
       fixed: "left",
       align: "center",
     },
@@ -44,24 +36,12 @@ const DemoDataGrid = () => {
       title: <i className="fa-solid fa-gear"></i>,
       dataIndex: "col1",
       width: 160,
-      render: (cell: any, row: any) => (
+      render: () => (
         <div>
-          <CommonButton
-            btnType="actionTable"
-            icon={<i className="fa-solid fa-eye"></i>}
-          />
-          <CommonButton
-            btnType="actionTable"
-            icon={<i className="fa-solid fa-plus"></i>}
-          />
-          <CommonButton
-            btnType="actionTable"
-            icon={<i className="fa-solid fa-pen-to-square"></i>}
-          />
-          <CommonButton
-            btnType="actionTable"
-            icon={<i className="fa-solid fa-trash-can"></i>}
-          />
+          <CommonButton btnType="actionTable" icon={<i className="fa-solid fa-eye"></i>} />
+          <CommonButton btnType="actionTable" icon={<i className="fa-solid fa-plus"></i>} />
+          <CommonButton btnType="actionTable" icon={<i className="fa-solid fa-pen-to-square"></i>} />
+          <CommonButton btnType="actionTable" icon={<i className="fa-solid fa-trash-can"></i>} />
         </div>
       ),
       fixed: "left",
@@ -72,7 +52,7 @@ const DemoDataGrid = () => {
       title: <div>Col1</div>,
       dataIndex: "col1",
       width: 200,
-      render: (cell: any, row: any) => <div>{cell}</div>,
+      render: (cell: any) => <div>{cell}</div>,
     },
     {
       key: uuidv4(),
@@ -130,10 +110,8 @@ const DemoDataGrid = () => {
       width: 200,
     },
   ];
-  let render: any = columns[1].render;
-  columns[1].render = (cell: any, row: any) => (
-    <CommonTooltip>{render(cell, row, 0)}</CommonTooltip>
-  );
+  const render: any = columns[1].render;
+  columns[1].render = (cell: any, row: any) => <CommonTooltip>{render(cell, row, 0)}</CommonTooltip>;
 
   return (
     <DisplayBox title={"Data grid"} isOpen={false}>
@@ -146,7 +124,7 @@ const DemoDataGrid = () => {
           type: "checkbox",
           //selectedRowKeys
           onChange: (selectedRowKeys: any, selectedRows: any) => {
-            console.log({ selectedRowKeys, selectedRows});
+            console.log({ selectedRowKeys, selectedRows });
           },
         }}
       />
@@ -158,8 +136,7 @@ const DemoDataGrid = () => {
         dataSource={data}
         columns={columns}
         pagination={{
-          onChange: (page: number, pageSize: number) =>
-            console.log({ page, pageSize }),
+          onChange: (page: number, pageSize: number) => console.log({ page, pageSize }),
           pageSize: 10,
           total: 2000,
           current: 5,

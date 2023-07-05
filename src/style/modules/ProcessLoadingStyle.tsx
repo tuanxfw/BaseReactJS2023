@@ -1,4 +1,3 @@
-import sizeLayout from "@style/abstracts/SizeLayout";
 import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
@@ -18,7 +17,7 @@ const ProcessLoadingStyle = styled.div`
     zoom: 5;
 
     i {
-      color: ${getColor("processLoading.color")}
+      color: ${getColor("processLoading.color")};
     }
   }
 `;

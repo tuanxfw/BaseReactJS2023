@@ -4,7 +4,7 @@ import type { TreeSelectProps } from "antd";
 import { CommonTooltip } from "@components/CommonComponent";
 import _ from "lodash";
 
-const { TreeNode, SHOW_ALL, SHOW_PARENT, SHOW_CHILD } = AntdTreeSelect;
+const { TreeNode, SHOW_ALL } = AntdTreeSelect;
 
 interface FieldOption {
   value: string;
@@ -18,9 +18,7 @@ interface CustomProps extends Omit<TreeSelectProps, "onChange"> {
 }
 
 const filterTreeNode = (input: any, event: any) => {
-  return String(event.title.props.children)
-    .toLowerCase()
-    .includes(input.toLowerCase());
+  return String(event.title.props.children).toLowerCase().includes(input.toLowerCase());
 };
 
 const renderTreeOptions = (fieldOption: FieldOption, treeData: any = []) => {
@@ -30,17 +28,12 @@ const renderTreeOptions = (fieldOption: FieldOption, treeData: any = []) => {
     const genElement = (tree: any) => {
       if (tree) {
         return tree.map((item: any) => {
-          let name = item[fieldOption.label];
-          let value = item[fieldOption.value];
-          let key = item[fieldOption.value]; //uuidv4();
+          const name = item[fieldOption.label];
+          const value = item[fieldOption.value];
+          const key = item[fieldOption.value]; //uuidv4();
 
           return (
-            <TreeNode
-              item={item}
-              value={value}
-              title={<CommonTooltip key={uuidv4()}>{name}</CommonTooltip>}
-              key={key}
-            >
+            <TreeNode item={item} value={value} title={<CommonTooltip key={uuidv4()}>{name}</CommonTooltip>} key={key}>
               {genElement(item[fieldOption.child])}
             </TreeNode>
           );
@@ -54,12 +47,7 @@ const renderTreeOptions = (fieldOption: FieldOption, treeData: any = []) => {
   return tree;
 };
 
-const TreeSelect = ({
-  fieldOption,
-  onChange,
-  treeData,
-  ...props
-}: CustomProps) => {
+const TreeSelect = ({ fieldOption, onChange, treeData, ...props }: CustomProps) => {
   const customOnChange = (value: any) => {
     if (_.isEmpty(value) && onChange) {
       onChange(value, value);

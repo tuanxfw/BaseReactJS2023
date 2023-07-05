@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "@redux/store";
 import { getNotification } from "@redux/selectors/notificationSelectors";
 import { createNotification } from "@redux/slices/notificationSlice";
-import _ from "lodash";
-
 
 interface Content {
   message?: any;
@@ -46,7 +44,6 @@ const Notification = () => {
 
       focusBtnClose();
     }
-
   }, [notification]);
   //#endregion
 
@@ -94,17 +91,19 @@ const Notification = () => {
 
   const focusBtnClose = () => {
     setTimeout(() => {
-      let btn: any = document.evaluate(
+      const btn: any = document.evaluate(
         '//a[@class="ant-notification-notice-close"][1]',
         document,
         null,
         XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
+        null,
       ).singleNodeValue;
 
       try {
         btn.focus();
-      } catch (error) {}
+      } catch (error) {
+        /* empty */
+      }
     }, 500);
   };
 

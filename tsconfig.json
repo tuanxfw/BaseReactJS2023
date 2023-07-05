@@ -26,7 +26,7 @@
       "@utils/*": ["./src/utils/*"],
       "@restful/*": ["./src/restful/*"],
       "@interface/*": ["./src/interface/*"],
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"],

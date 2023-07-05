@@ -22,7 +22,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
   const genItemPaging = (
     page: number,
     type: "page" | "prev" | "next" | "jump-prev" | "jump-next",
-    element: React.ReactNode
+    element: React.ReactNode,
   ) => {
     let resultElement = null;
 
@@ -52,30 +52,21 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
   };
 
   const genColumns = (columnsData: ColumnsType | undefined) => {
-    let result: ColumnsType = [];
+    const result: ColumnsType = [];
 
     _.map(columnsData, (column) => {
-      let item: any = {
+      const item: any = {
         key: uuidv4(),
         ...column,
         render: (cell: any, row: any, index: number) => {
           index = index + 1;
 
-          let pagination = props.pagination as PaginationProps;
-          if (
-            paginationType === "api" &&
-            pagination.current &&
-            pagination.current > 1 &&
-            pagination.pageSize
-          ) {
-            index = index + (pagination.pageSize * pagination.current);
+          const pagination = props.pagination as PaginationProps;
+          if (paginationType === "api" && pagination.current && pagination.current > 1 && pagination.pageSize) {
+            index = index + pagination.pageSize * pagination.current;
           }
 
-          return (
-            <CommonTooltip>
-              {column.render ? column.render(cell, row, index) : cell}
-            </CommonTooltip>
-          );
+          return <CommonTooltip>{column.render ? column.render(cell, row, index) : cell}</CommonTooltip>;
         },
         ellipsis: {
           showTitle: false,
@@ -91,11 +82,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
   if (paginationType === "api") {
     return (
       <DataGridStyle>
-        <Table
-          {...props}
-          columns={genColumns(props.columns)}
-          pagination={false}
-        ></Table>
+        <Table {...props} columns={genColumns(props.columns)} pagination={false}></Table>
         <ul className="pagination-client ant-pagination ant-table-pagination ant-table-pagination-center">
           <Pagination
             size="default"
@@ -104,7 +91,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
             showLessItems
             itemRender={genItemPaging}
             defaultCurrent={1}
-            showTotal={(total, range) => (
+            showTotal={(total) => (
               <div className="total-field">
                 <div>
                   {total} {t("footer.record")}
@@ -133,7 +120,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
                 showLessItems: true,
                 itemRender: genItemPaging,
                 defaultCurrent: 1,
-                showTotal: (total, range) => (
+                showTotal: (total) => (
                   <div className="total-field">
                     <div>
                       {total} {t("footer.record")}
@@ -181,5 +168,5 @@ DataGrid.defaultProps = {
   scroll: { x: window.innerWidth, y: "460px" },
   paginationType: "client",
   size: "small",
-  bordered: true
+  bordered: true,
 };

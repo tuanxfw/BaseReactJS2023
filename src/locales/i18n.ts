@@ -12,7 +12,7 @@ i18n
     returnNull: false,
     returnEmptyString: true,
     react: {
-      useSuspense: false
+      useSuspense: false,
     },
     fallbackLng: dictionary[0].ns,
     debug: false,
@@ -22,12 +22,12 @@ i18n
 
     backend: {
       // for all available options read the backend's repository readme file
-      loadPath: AppConfig.VITE_PUBLIC_URL + '/locales/{{lng}}/{{ns}}.json'
+      loadPath: AppConfig.VITE_PUBLIC_URL + "/locales/{{lng}}/{{ns}}.json",
     },
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
-    }
+    },
   });
 
 export default i18n;
@@ -42,7 +42,9 @@ export const getCurrentLocale = (pathname: string): any => {
   let currentLocale;
 
   for (let index = 0; index < locales.length; index++) {
-    if (pathname.startsWith(`${AppConfig.VITE_PUBLIC_URL}/${locales[index].ns}/`)) {
+    if (
+      pathname.startsWith(`${AppConfig.VITE_PUBLIC_URL}/${locales[index].ns}/`)
+    ) {
       currentLocale = locales[index];
       break;
     }

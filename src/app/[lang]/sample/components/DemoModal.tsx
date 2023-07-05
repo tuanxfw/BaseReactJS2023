@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { CommonButton, CommonModal, DisplayBox } from "@components/CommonComponent";
-import { App } from 'antd';
+import {
+  CommonButton,
+  CommonModal,
+  DisplayBox,
+} from "@components/CommonComponent";
+
 const DemoModal = () => {
   const [modal, setModal] = useState<any>(null);
 
-  const onClick = (event: any) => {
-    let options = {};
+  const onClick = () => {
+    const options = {};
 
     const Modal = CommonModal(Content1);
     setModal(<Modal title="Test" width={"1000px"} options={options} />);
@@ -26,11 +29,11 @@ const DemoModal = () => {
 
 export default DemoModal;
 
-const Content1 = ({closeModal, ...props}: any) => {
+const Content1 = ({ closeModal }: any) => {
   const [modal, setModal] = useState<any>(null);
 
-  const onClick = (event: any) => {
-    let options = {};
+  const onClick = () => {
+    const options = {};
 
     const Modal = CommonModal(Content2);
     setModal(<Modal title="Test" width={"300px"} options={options} />);
@@ -54,11 +57,7 @@ const Content1 = ({closeModal, ...props}: any) => {
         <CommonButton btnType="text" onClick={onClick}>
           Modal child
         </CommonButton>
-        <CommonButton
-          className="close-modal"
-          btnType="text"
-          onClick={onClose}
-        >
+        <CommonButton className="close-modal" btnType="text" onClick={onClose}>
           Close
         </CommonButton>
       </div>
@@ -66,7 +65,7 @@ const Content1 = ({closeModal, ...props}: any) => {
   );
 };
 
-const Content2 = ({closeModal, ...props}: any) => {
+const Content2 = ({ closeModal }: any) => {
   return (
     <>
       <div>

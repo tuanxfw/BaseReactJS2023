@@ -1,6 +1,6 @@
 import ProcessLoadingStyle from "@style/modules/ProcessLoadingStyle";
 import { Spin } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import store from "@redux/store";
 import { getProcessLoadingValue } from "@redux/selectors/processLoadingSelectors";
 import {
@@ -13,8 +13,7 @@ const ProcessLoading = () => {
 
   return (
     <div style={{ display: processLoadingValue > 0 ? "inherit" : "none" }}>
-      <ProcessLoadingStyle
-      >
+      <ProcessLoadingStyle>
         <Spin
         //indicator={<i className="fa-solid fa-spinner fa-spin-pulse "></i>}
         />
@@ -26,9 +25,9 @@ const ProcessLoading = () => {
 export default ProcessLoading;
 
 export const openProcessLoading = () => {
-  store.dispatch(open(null));
+  store.dispatch(open());
 };
 
 export const closeProcessLoading = () => {
-  store.dispatch(close(null));
+  store.dispatch(close());
 };

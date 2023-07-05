@@ -1,5 +1,3 @@
-import sizeLayout from "@style/abstracts/SizeLayout";
-import getColor from "@style/themes/Color";
 import styled from "styled-components";
 import { AppConfig } from "@constants/constants";
 
@@ -49,12 +47,12 @@ const LoginStyle = styled.div`
     }
 
     .advance-action {
-        width: 100%;
-        margin-top: 20px;
-        text-align: right;
-        cursor: pointer;
-        padding-right: 10px;
-        color: #4c96f7;
+      width: 100%;
+      margin-top: 20px;
+      text-align: right;
+      cursor: pointer;
+      padding-right: 10px;
+      color: #4c96f7;
     }
   }
 `;

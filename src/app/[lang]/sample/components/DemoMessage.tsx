@@ -5,10 +5,9 @@ import {
   DisplayBox,
 } from "@components/CommonComponent";
 
-
 const DemoMessage = () => {
   const onClick = (event: any) => {
-    let type = event?.target.innerText;
+    const type = event?.target.innerText;
 
     showMessage({
       type: type.toLowerCase(),
@@ -49,7 +48,6 @@ const DemoMessage = () => {
       >
         <CommonButton btnType="text">Confirm</CommonButton>
       </CommonConfirm>
-
     </DisplayBox>
   );
 };

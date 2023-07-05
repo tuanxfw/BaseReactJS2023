@@ -11,7 +11,7 @@ import DemoDataGrid from "./components/DemoDataGrid";
 import { useEffect } from "react";
 import { create } from "zustand";
 
-const Index = (props: any) => {
+const Index = () => {
   useEffect(() => {
     //throw new Error("2");
   }, []);
@@ -49,12 +49,13 @@ const Index = (props: any) => {
 export default authen(author(Index));
 
 interface MyStore {
-  myStore: number
-  setMyStore: (input: number) => void
+  myStore: number;
+  setMyStore: (input: number) => void;
 }
 
-const useMyStore = create<MyStore>((set) => ({
+const useMyStore = create<MyStore>()((set) => ({
   myStore: 1,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setMyStore: (input: number) => set((state: any) => ({ myStore: input })),
 }));
 
