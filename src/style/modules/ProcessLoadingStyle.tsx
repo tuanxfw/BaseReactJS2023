@@ -14,7 +14,7 @@ const ProcessLoadingStyle = styled.div`
   background: ${getColor("processLoading.backdrop")};
 
   .ant-spin {
-    zoom: 5;
+    zoom: 3;
 
     i {
       color: ${getColor("processLoading.color")};

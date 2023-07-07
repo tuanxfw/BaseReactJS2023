@@ -49,5 +49,5 @@ export default DisplayBox;
 
 DisplayBox.defaultProps = {
   isOpen: true,
-  forceRender: true,
+  forceRender: false,
 };

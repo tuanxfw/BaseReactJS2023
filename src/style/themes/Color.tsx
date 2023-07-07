@@ -13,8 +13,14 @@ const vetc = {
     background: "#00a65052",
     fontColor: "#000000",
   },
+  modal: {
+    header: {
+      background: "#00a651",
+      fontColor: "#ffffff",
+    },
+  },
   processLoading: {
-    backdrop: "#ffffff50",
+    backdrop: "#ffffff63",
     color: "#00a651",
   },
   displayBox: {
@@ -40,6 +46,9 @@ const vetc = {
       background: "red",
       color: "#ffffff",
     },
+  },
+  wrappedLoading: {
+    color: "#00a651",
   },
 };
 

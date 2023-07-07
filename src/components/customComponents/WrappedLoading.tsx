@@ -1,11 +1,12 @@
+import WrappedLoadingStyle from "@style/modules/WrappedLoadingStyle";
 import { Spin } from "antd";
 import type { SpinProps } from "antd";
 
 const WrappedLoading = (props: SpinProps) => {
   return (
-    <>
-      <Spin spinning {...props} />
-    </>
+    <WrappedLoadingStyle>
+      <Spin indicator={<i className="fa-solid fa-spinner fa-spin-pulse" />} {...props} />
+    </WrappedLoadingStyle>
   );
 };
 

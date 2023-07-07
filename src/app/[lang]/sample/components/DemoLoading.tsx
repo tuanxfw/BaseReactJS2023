@@ -5,6 +5,7 @@ import {
   WrappedLoading,
   CommonInputText,
   DisplayBox,
+  CommonTextArea,
 } from "@components/CommonComponent";
 import { Col, Row } from "antd";
 
@@ -24,13 +25,13 @@ const DemoLoading = () => {
       </CommonButton>
       <hr />
       <Row>
-        <Col {...{ xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12 }}>
-          <WrappedLoading spinning={true}>
-            <CommonInputText />
+        <Col className="col-space" {...{ xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12 }}>
+          <WrappedLoading spinning={true} style={{ zoom: "2" }}>
+            <CommonTextArea rows={10} value={"Một văn bản dài nhưng mà ngắn"} />
           </WrappedLoading>
         </Col>
 
-        <Col {...{ xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12 }}>
+        <Col className="col-space" {...{ xxl: 12, xl: 12, lg: 12, md: 12, sm: 12, xs: 12 }}>
           <WrappedLoading spinning={true}>
             <CommonInputText />
           </WrappedLoading>

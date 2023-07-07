@@ -61,6 +61,7 @@ const Modal = (Component: React.ComponentType) => {
 
     return (
       <AntdModal
+        maskClosable={false}
         title={
           <div
             className="modal-title"
@@ -73,7 +74,7 @@ const Modal = (Component: React.ComponentType) => {
               setDisabled(true);
             }}
           >
-            {title}
+            <div>{title}</div>
           </div>
         }
         open={open}

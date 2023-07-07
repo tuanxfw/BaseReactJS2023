@@ -5,8 +5,9 @@ import CommonLayout from "@components/layout/CommonLayout";
 const Login = lazy(() => import("@components/authen/Login"));
 import { localStoreUtil } from "@utils/commonUtil";
 import _ from "lodash";
+import { IMenuItem } from "@interface/Menu";
 
-export function authen(Component: React.ComponentType) {
+export const authen = (Component: React.ComponentType) => {
   const Authen = (props: any) => {
     if (localStoreUtil.checkLoginLocal()) {
       return (
@@ -22,22 +23,22 @@ export function authen(Component: React.ComponentType) {
   return Authen;
 }
 
-export function author(Component: React.ComponentType) {
+export const author = (Component: React.ComponentType) => {
   const Author = (props: any) => {
     const location = useLocation();
     const params = useParams();
 
-    const lstPer = localStoreUtil.getData("menu").items;
+    const lstPer: IMenuItem[] = localStoreUtil.getData("menu").items;
 
     const checkPermission = (): boolean => {
       const currentPath = location.pathname.replace("/" + params.lang, "");
-      const menu = _.find(lstPer, (per) => per["path"] === currentPath);
+      const menu = _.find(lstPer, (per: IMenuItem) => per.path === currentPath);
 
       if (!menu) {
         return false;
       }
 
-      document.title = menu["name"];
+      document.title = menu.name;
       return true;
     };
 

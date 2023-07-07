@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  CommonButton,
-  CommonModal,
-  DisplayBox,
-} from "@components/CommonComponent";
+import { CommonButton, CommonModal, DisplayBox } from "@components/CommonComponent";
 
 const DemoModal = () => {
   const [modal, setModal] = useState<any>(null);
@@ -46,14 +42,16 @@ const Content1 = ({ closeModal }: any) => {
 
   return (
     <>
-      {modal}
+      <div>
+        <CommonButton>Làm gì đó</CommonButton>
+      </div>
       <div>
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
       </div>
       <hr />
-      <div style={{ textAlign: "right" }}>
+      <div className="modal-footer">
         <CommonButton btnType="text" onClick={onClick}>
           Modal child
         </CommonButton>
@@ -61,6 +59,7 @@ const Content1 = ({ closeModal }: any) => {
           Close
         </CommonButton>
       </div>
+      {modal}
     </>
   );
 };
@@ -73,11 +72,7 @@ const Content2 = ({ closeModal }: any) => {
       </div>
       <hr />
       <div style={{ textAlign: "right" }}>
-        <CommonButton
-          className="close-modal"
-          btnType="text"
-          onClick={closeModal}
-        >
+        <CommonButton className="close-modal" btnType="text" onClick={closeModal}>
           Close
         </CommonButton>
       </div>

@@ -1,17 +1,14 @@
 // eslint-disable-next-line import/no-unresolved
 import routes from "~react-pages";
 import { Suspense, lazy, useLayoutEffect } from "react";
-import { App as AppAntd, Skeleton , ConfigProvider } from "antd";
+import { App as AppAntd, Skeleton, ConfigProvider } from "antd";
 import { useRoutes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundary from "@components/layout/ErrorBoundary";
 import NotFound from "@components/layout/NotFound";
 import dayjs from "dayjs";
 import i18n, { checkLocale, getCurrentLocale } from "@locales/i18n";
-import {
-  CommonNotification,
-  CommonProcessLoading,
-} from "@components/CommonComponent";
+import { CommonNotification, CommonProcessLoading } from "@components/CommonComponent";
 // const ReactQueryDevtoolsProduction = lazy(() =>
 //   import("react-query/devtools/development").then((d) => ({
 //     default: d.ReactQueryDevtools,
@@ -19,11 +16,9 @@ import {
 // );
 
 const ReactQueryDevtoolsProduction = lazy(() =>
-  import("@tanstack/react-query-devtools/build/lib/index.prod.js").then(
-    (d) => ({
-      default: d.ReactQueryDevtools,
-    })
-  )
+  import("@tanstack/react-query-devtools/build/lib/index.prod.js").then((d) => ({
+    default: d.ReactQueryDevtools,
+  })),
 );
 
 const queryClient = new QueryClient({
@@ -66,7 +61,7 @@ const App = () => {
   useLayoutEffect(() => {
     checkLocale(window.location);
 
-    i18n.changeLanguage(locale.ns);
+    i18n.changeLanguage(locale?.ns);
   }, []);
 
   dayjs.locale(locale?.dayjs);

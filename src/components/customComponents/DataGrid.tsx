@@ -132,30 +132,6 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
               }
             : false
         }
-        // rowSelection={{
-        //   type: "checkbox",
-        // }}
-        // footer={() => (
-        //   <div className="footer-table">
-        //     <div className="total-field">
-        //       <div>
-        //         {props.dataSource?.length || 0} {t("footer.record")}
-        //       </div>
-        //     </div>
-        //     <div className="pagination-field">
-        //       <Pagination
-        //         size="default"
-        //         showSizeChanger
-        //         showLessItems
-        //         itemRender={genItemPaging}
-        //         //onShowSizeChange={onShowSizeChange}
-        //         //defaultCurrent={1}
-        //         total={props.dataSource?.length || 0}
-        //       />
-        //     </div>
-        //     <div className="action-field"></div>
-        //   </div>
-        // )}
       ></Table>
     </DataGridStyle>
   );

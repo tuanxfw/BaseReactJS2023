@@ -30,6 +30,22 @@ body {
   padding-left: 5px;
   padding-right: 5px;
 }
+
+.form-item-valid {
+  .ant-select-selector, 
+  .ant-input-affix-wrapper,
+  .ant-picker, 
+  .ant-input,
+  .ant-btn {
+    border: 1px solid red !important;
+  }
+  
+  .ant-input-affix-wrapper {
+    input {
+      border: none !important;
+    }
+  }
+}
 `;
 
 export default GlobalStyle;

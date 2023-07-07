@@ -6,12 +6,12 @@ import * as yup from "yup";
 //#region Mixed
 declare module "yup" {
   interface MixedSchema {
-    notEmpty(): yup.MixedSchema;
+    required(): yup.MixedSchema;
   }
 }
 
-yup.addMethod(yup.mixed, "notEmpty", function () {
-  return this.test("notEmpty", "", function (value: any) {
+yup.addMethod(yup.mixed, "required", function () {
+  return this.test("required", "", function (value: any) {
     const { path, createError } = this;
 
     if (objectUtil.isEmptyValue(value)) {
@@ -29,18 +29,18 @@ yup.addMethod(yup.mixed, "notEmpty", function () {
 //#region String
 declare module "yup" {
   interface StringSchema {
-    notEmpty(): yup.StringSchema;
+    required(): yup.StringSchema;
   }
 }
 
-yup.addMethod(yup.string, "notEmpty", function () {
-  return this.test("notEmpty", "", function (value: any) {
+yup.addMethod(yup.string, "required", function (message?: string) {
+  return this.test("required", "", function (value: any) {
     const { path, createError } = this;
 
     if (_.isEmpty(value)) {
       return createError({
         path,
-        message: i18n.t("common:validate.notEmpty") as string,
+        message: message || (i18n.t("common:validate.notEmpty") as string),
       });
     }
 
@@ -56,8 +56,8 @@ declare module "yup" {
   }
 }
 
-yup.addMethod(yup.number, "notEmpty", function () {
-  return this.test("notEmpty", "", function (value: any) {
+yup.addMethod(yup.number, "required", function () {
+  return this.test("required", "", function (value: any) {
     const { path, createError } = this;
 
     if (!_.toString(value)) {

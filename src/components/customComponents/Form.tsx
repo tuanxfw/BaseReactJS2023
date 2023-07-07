@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import useFocusError from "@hooks/form/useFocusError";
 import useFocusFirstElement from "@hooks/form/useFocusFirstElement";
 import useConsoleLog from "@hooks/form/useConsoleLog";
+import Label from "./Label";
+import ValidTooltip from "./ValidTooltip";
 
 interface CustomProps extends FormHTMLAttributes<HTMLFormElement> {
   errors?: any;
@@ -42,6 +44,22 @@ const Form = ({ errors, watch, ...props }: CustomProps) => {
 
   return (
     <form name={refNameForm.current} autoComplete="off" {...props} onClick={onClickElementForm} onSubmit={onSubmit} />
+  );
+};
+
+interface CustomPropsFormItem {
+  children?: any;
+  required?: boolean;
+  valid?: any;
+  label?: any;
+}
+Form.Item = (props: CustomPropsFormItem) => {
+  return (
+    <>
+      <Label>{props.label}</Label>
+      <ValidTooltip>{props.valid}</ValidTooltip>
+      <div className={props.valid ? "form-item-valid" : ""}>{props.children}</div>
+    </>
   );
 };
 

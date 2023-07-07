@@ -1,23 +1,18 @@
 import { Button, Col, Row } from "antd";
-import {
-  CommonForm,
-  CommonInputText,
-  CommonInputPassword,
-  CommonValidTooltip,
-  showMessage,
-} from "@components/CommonComponent";
+import { CommonForm, CommonInputText, CommonInputPassword, showMessage } from "@components/CommonComponent";
 import LoginStyle from "@style/pages/LoginStyle";
 import { useTranslation } from "react-i18next";
 import { localStoreUtil, yup, yupResolver } from "@utils/commonUtil";
 import { useForm, Controller } from "react-hook-form";
 import { useLogin } from "@hooks/fetch/useAuth";
+import { IMenuItem, IMenuSub } from "@interface/Menu";
 
 const Login = () => {
   const { t } = useTranslation(["login", "common"]);
 
   const schema = yup.object({
-    username: yup.string().nullable().notEmpty(),
-    password: yup.string().nullable().notEmpty(),
+    username: yup.string().nullable().required(),
+    password: yup.string().nullable().required(),
   });
 
   //#region Hooks
@@ -53,40 +48,39 @@ const Login = () => {
 
       const menu = [
         {
-          id: "1",
-          name: "Menu 1",
+          id: "0",
+          name: "Sample",
           path: "/sample",
         },
         {
+          id: "1",
+          name: "Form1",
+          path: "/form-1",
+        },
+        {
           id: "2",
-          name: "Menu 2",
+          name: "Form2",
           children: [
             {
               id: "2.1",
-              name: "Menu 2.1",
-              path: "/form1",
+              name: "Child Form2",
+              path: "/form-2/child-form-2",
             },
           ],
         },
         {
           id: "3",
-          name: "Menu 3",
+          name: "Form3",
           children: [
             {
               id: "3.1",
-              name: "Menu 3.1",
-              path: "/form1",
+              name: "Child Form 3.1",
+              path: "/form-3/child-form-31",
             },
             {
               id: "3.2",
-              name: "Menu 3.2",
-              children: [
-                {
-                  id: "3.2.1",
-                  name: "Menu 3.2.1",
-                  path: "/form1",
-                },
-              ],
+              name: "Child Form 3.2",
+              path: "/form-3/child-form-32",
             },
           ],
         },
@@ -102,32 +96,35 @@ const Login = () => {
 
       window.location.reload();
     } catch (error) {
-      //console.error(error);
-      //showMessage({type: "error", message: t("common:errors.exception")});
+      console.error(error);
       showMessage({ type: "error", message: t("common:errors.exception") });
     }
   };
 
   const parseMenuData = (menuData: any[], parent = "") => {
-    let subs: any[] = [];
-    let items: any[] = [];
+    let subs: IMenuSub[] = [];
+    let items: IMenuItem[] = [];
 
     menuData.map((menu) => {
       if (menu["children"]) {
-        const sub = { ...menu };
-        sub.parent = parent;
-        sub.type = "sub";
-        delete sub.children;
+        const sub: IMenuSub = {
+          id: menu["id"],
+          name: menu["name"],
+          parent: parent,
+        };
 
         subs.push(sub);
 
-        const result = parseMenuData(menu.children, menu["id"]);
+        const result = parseMenuData(menu["children"], menu["id"]);
         subs = subs.concat(result.subs);
         items = items.concat(result.items);
       } else {
-        const item = { ...menu };
-        item.parent = parent;
-        item.type = "item";
+        const item: IMenuItem = {
+          id: menu["id"],
+          name: menu["name"],
+          path: menu["path"],
+          parent: parent,
+        };
 
         items.push(item);
       }
@@ -164,14 +161,15 @@ const Login = () => {
                   name="username"
                   render={({ fieldState, field }) => (
                     <>
-                      <CommonValidTooltip>{fieldState.error?.message}</CommonValidTooltip>
-                      <CommonInputText
-                        {...field}
-                        placeholder={t("username") as string}
-                        prefix={<i className="fa-solid fa-user"></i>}
-                        autoUpper
-                        autoTrim
-                      />
+                      <CommonForm.Item valid={fieldState.error?.message}>
+                        <CommonInputText
+                          {...field}
+                          placeholder={t("username") as string}
+                          prefix={<i className="fa-solid fa-user"></i>}
+                          autoUpper
+                          autoTrim
+                        />
+                      </CommonForm.Item>
                     </>
                   )}
                 />
@@ -181,13 +179,14 @@ const Login = () => {
                   name="password"
                   render={({ fieldState, field }) => (
                     <>
-                      <CommonValidTooltip>{fieldState.error?.message}</CommonValidTooltip>
-                      <CommonInputPassword
-                        {...field}
-                        placeholder={t("username") as string}
-                        prefix={<i className="fa-solid fa-key"></i>}
-                        autoTrim
-                      />
+                      <CommonForm.Item valid={fieldState.error?.message}>
+                        <CommonInputPassword
+                          {...field}
+                          placeholder={t("password") as string}
+                          prefix={<i className="fa-solid fa-key"></i>}
+                          autoTrim
+                        />
+                      </CommonForm.Item>
                     </>
                   )}
                 />
