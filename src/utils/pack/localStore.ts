@@ -4,17 +4,42 @@ import _ from "lodash";
 function checkLoginLocal(): boolean {
   const store = localStorage.getItem(AppConfig.VITE_CLIENT);
 
-  if (store) {
+  const token = getToken();
+  if (store && !_.isEmpty(token)) {
     return true;
   }
 
   return false;
 }
 
+function setToken(value: any) {
+  const store: any = JSON.parse(_.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}");
+
+  const currentTimestamp = Math.floor(Date.now() / 1000); //second
+
+  store["token"] = value;
+  store["expireSession"] = currentTimestamp + value["refresh_expires_in"];
+
+  localStorage.setItem(AppConfig.VITE_CLIENT, JSON.stringify(store));
+}
+
+function getToken() {
+  const store: any = JSON.parse(_.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}");
+
+  const currentTimestamp = Math.floor(Date.now() / 1000); //second
+
+  const expireToken: any = _.get(store, "expireSession", 0);
+  const token: any = _.get(store, "token", {});
+
+  if (currentTimestamp < expireToken) {
+    return token;
+  }
+
+  return {};
+}
+
 function setData(key: string, value: any) {
-  const store: any = JSON.parse(
-    _.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}"
-  );
+  const store: any = JSON.parse(_.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}");
 
   store[key] = value;
 
@@ -37,6 +62,8 @@ function clearData() {
 
 const localStore = {
   checkLoginLocal,
+  setToken,
+  getToken,
   setData,
   getData,
   clearData,

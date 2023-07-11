@@ -149,7 +149,7 @@ const genConfig = (configOverride?: ConfigRequest) => {
 
   const defaultHeader = {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + localStoreUtil.getData("token")?.["access_token"] || "",
+    Authorization: "Bearer " + localStoreUtil.getToken()?.["access_token"] || "",
   };
   config.headers = { ...defaultHeader, ...configOverride?.headers };
 
@@ -213,12 +213,12 @@ const handleException = (config: ConfigRequest) => async (error: any) => {
 
       const params = new URLSearchParams();
       params.append("grant_type", "refresh_token");
-      params.append("refresh_token", localStoreUtil.getData("token")["refresh_token"]);
+      params.append("refresh_token", localStoreUtil.getToken()["refresh_token"]);
 
       const tokenData = await login(keycloakUtil.getUrlLogin(), params);
-      localStoreUtil.setData("token", tokenData);
+      localStoreUtil.setToken(tokenData);
 
-      error.config.headers["Authorization"] = "Bearer " + localStoreUtil.getData("token")["access_token"];
+      error.config.headers["Authorization"] = "Bearer " + localStoreUtil.getToken()["access_token"];
 
       const res = await instance(error.config);
 

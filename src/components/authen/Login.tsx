@@ -38,7 +38,7 @@ const Login = () => {
       if (!tokenData) {
         throw new Error(t("common:errors.exception") as string);
       }
-      localStoreUtil.setData("token", tokenData);
+      localStoreUtil.setToken(tokenData);
 
       // let userInfoData = await getUserInfo.refetch();
       // if (!userInfoData) {
