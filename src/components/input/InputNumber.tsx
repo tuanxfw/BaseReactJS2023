@@ -1,21 +1,14 @@
 import { forwardRef } from "react";
 import { Input } from "antd";
 import { NumericFormat } from "react-number-format";
-import type {
-  NumericFormatProps,
-  NumberFormatValues,
-} from "react-number-format";
+import type { NumericFormatProps, NumberFormatValues } from "react-number-format";
 import _ from "lodash";
 import { Format } from "@constants/constants";
 
-interface CustomProps
-  extends Omit<
-    NumericFormatProps,
-    "customInput" | "onValueChange" | "onChange"
-  > {
+interface CustomProps extends Omit<NumericFormatProps, "customInput" | "onValueChange" | "onChange"> {
   fieldValue?: "formattedValue" | "value" | "floatValue";
   customInput?: any;
-  onChange?: (value: string | number | NumberFormatValues) => void;
+  onChange?: (value: string | number) => void;
 }
 
 const InputNumber = forwardRef(
@@ -23,13 +16,13 @@ const InputNumber = forwardRef(
   ({ onChange, fieldValue, ...props }: CustomProps, ref: any) => {
     const onValueChange = (values: NumberFormatValues) => {
       if (onChange) {
-        const value = fieldValue ? values[fieldValue] : values;
-        onChange(value || "");
+        const value = fieldValue ? values[fieldValue] : "";
+        onChange(value ?? "");
       }
     };
 
     return <NumericFormat onValueChange={onValueChange} {...props} />;
-  }
+  },
 );
 
 export default InputNumber;

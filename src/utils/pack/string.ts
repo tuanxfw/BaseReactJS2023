@@ -45,8 +45,16 @@ function compareString(
   return result;
 }
 
+function getBytesString(value: string) {
+  value = _.toString(value);
+  const bytes = new Blob([value]).size;
+
+  return bytes
+};
+
 const string = {
   compareString,
+  getBytesString,
 };
 
 export default string;

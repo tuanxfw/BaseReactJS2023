@@ -5,7 +5,7 @@ import type { SpinProps } from "antd";
 const WrappedLoading = (props: SpinProps) => {
   return (
     <WrappedLoadingStyle>
-      <Spin indicator={<i className="fa-solid fa-spinner fa-spin-pulse" />} {...props} />
+      <Spin {...props} />
     </WrappedLoadingStyle>
   );
 };

@@ -5,8 +5,6 @@ import { CaretRightOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from "uuid";
 import DisplayBoxStyle from "@style/modules/DisplayBoxStyle";
 
-const { Panel } = Collapse;
-
 interface CustomProps extends CollapseProps {
   isOpen?: boolean;
   title?: string;
@@ -26,21 +24,20 @@ const DisplayBox = (props: CustomProps) => {
   return (
     <DisplayBoxStyle>
       <Collapse
+        className="display-box"
         onChange={() => setIsOpen(!isOpen)}
         size="small"
         activeKey={[isOpen ? key.current : ""]}
-        expandIcon={({ isActive }) => (
-          <CaretRightOutlined rotate={isActive ? 90 : 0} />
-        )}
-      >
-        <Panel
-          header={props.title}
-          key={key.current}
-          forceRender={props.forceRender}
-        >
-          {props.children}
-        </Panel>
-      </Collapse>
+        expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
+        items={[
+          {
+            key: key.current,
+            label: props.title,
+            forceRender: props.forceRender,
+            children: props.children,
+          },
+        ]}
+      />
     </DisplayBoxStyle>
   );
 };

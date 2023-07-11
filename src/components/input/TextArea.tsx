@@ -3,14 +3,15 @@ import { Input } from "antd";
 import type { TextAreaProps } from "antd/es/input/TextArea";
 import _ from "lodash";
 
-interface CustomProps extends TextAreaProps {
+interface CustomProps extends Omit<TextAreaProps, "value"> {
   autoTrim?: boolean;
   autoUpper?: boolean;
   autoLower?: boolean;
+  value?: string | null;
 }
 
 const TextArea = forwardRef(
-  ({ autoTrim, autoUpper, autoLower, value, onChange, onBlur, onKeyPress, ...props }: CustomProps, ref: any) => {
+  ({ autoTrim, autoUpper, autoLower, value, onChange, onBlur, onKeyDown, ...props }: CustomProps, ref: any) => {
     const customOnChange = (e: any) => {
       let value = e.target.value;
 
@@ -35,24 +36,24 @@ const TextArea = forwardRef(
       if (onBlur) onBlur(e);
     };
 
-    const customOnKeyPress = (e: any) => {
+    const customOnKeyDown = (e: any) => {
       const value = e.target.value;
 
       if (e.key === "Enter" && autoTrim) {
         if (onChange) onChange(value.trim());
       }
 
-      if (onKeyPress) onKeyPress(e);
+      if (onKeyDown) onKeyDown(e);
     };
 
     return (
       <Input.TextArea
         ref={ref}
         {...props}
-        value={value}
+        value={_.toString(value)}
         onBlur={customOnBlur}
         onChange={customOnChange}
-        onKeyPress={customOnKeyPress}
+        onKeyDown={customOnKeyDown}
       />
     );
   },

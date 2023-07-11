@@ -5,9 +5,10 @@ import _ from "lodash";
 import { Format } from "@constants/constants";
 import type { Dayjs } from "dayjs";
 import { dateUtil } from "@utils/commonUtil";
-interface CustomProps extends Omit<DatePickerProps, "picker"> {
+interface CustomProps extends Omit<DatePickerProps, "picker" | "value"> {
   pickerType?: "time" | "date" | "datetime" | "week" | "month" | "quarter" | "year";
-  onChange?: (value: any) => void;
+  onChange?: (value?: any) => void;
+  value?: string | null | undefined;
 }
 
 const format = {
@@ -70,13 +71,14 @@ const format = {
   },
 };
 
-const DatePicker = forwardRef(({ pickerType, onChange, ...props }: CustomProps, ref: any) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const DatePicker = forwardRef(({ pickerType, onChange, ...props }: CustomProps, _ref: any) => {
   const commonOnchange = (value: any) => {
     if (onChange) onChange(value);
   };
 
   if (pickerType === "time") {
-    return <CustomTimePicker ref={ref} commonOnchange={commonOnchange} {...props} />;
+    return <CustomTimePicker commonOnchange={commonOnchange} {...props} />;
   } else if (pickerType === "datetime") {
     return <CustomDateTimePicker commonOnchange={commonOnchange} {...props} />;
   } else if (pickerType === "week") {

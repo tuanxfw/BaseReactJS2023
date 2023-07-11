@@ -17,6 +17,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@hookform/resolvers": "^3.1.0",
+    "@react-hook/window-size": "^3.1.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.29.14",
     "@tanstack/react-query-devtools": "^4.29.14",
@@ -25,6 +26,7 @@
     "dayjs": "^1.11.7",
     "i18next": "^22.5.1",
     "i18next-http-backend": "^2.2.1",
+    "inputmask": "^5.0.8",
     "lodash": "^4.17.21",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
@@ -42,6 +44,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@types/inputmask": "^5.0.3",
     "@types/lodash": "^4.14.194",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.28",

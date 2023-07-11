@@ -47,9 +47,6 @@ const vetc = {
       color: "#ffffff",
     },
   },
-  wrappedLoading: {
-    color: "#00a651",
-  },
 };
 
 const theme = {

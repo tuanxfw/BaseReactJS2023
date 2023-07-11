@@ -10,19 +10,7 @@ interface CustomProps extends InputProps {
 }
 
 const InputText = forwardRef(
-  (
-    {
-      autoTrim,
-      autoUpper,
-      autoLower,
-      value,
-      onChange,
-      onBlur,
-      onKeyPress,
-      ...props
-    }: CustomProps,
-    ref: any
-  ) => {
+  ({ autoTrim, autoUpper, autoLower, value, onChange, onBlur, onKeyDown, ...props }: CustomProps, ref: any) => {
     const customOnChange = (e: any) => {
       let value = e.target.value;
 
@@ -34,7 +22,7 @@ const InputText = forwardRef(
         value = value.toLowerCase();
       }
 
-      if (onChange) onChange(value);
+      if (onChange) onChange(value || "");
     };
 
     const customOnBlur = (e: any) => {
@@ -47,14 +35,14 @@ const InputText = forwardRef(
       if (onBlur) onBlur(e);
     };
 
-    const customOnKeyPress = (e: any) => {
+    const customOnKeyDown = (e: any) => {
       const value = e.target.value;
 
       if (e.key === "Enter" && autoTrim) {
         if (onChange) onChange(value.trim());
       }
 
-      if (onKeyPress) onKeyPress(e);
+      if (onKeyDown) onKeyDown(e);
     };
 
     return (
@@ -64,10 +52,10 @@ const InputText = forwardRef(
         value={value}
         onBlur={customOnBlur}
         onChange={customOnChange}
-        onKeyPress={customOnKeyPress}
+        onKeyDown={customOnKeyDown}
       />
     );
-  }
+  },
 );
 
 export default InputText;

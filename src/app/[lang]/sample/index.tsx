@@ -10,6 +10,7 @@ import DemoSelect from "./components/DemoSelect";
 import DemoDataGrid from "./components/DemoDataGrid";
 import { useEffect } from "react";
 import { create } from "zustand";
+import DemoForm from "./components/DemoForm";
 
 const Index = () => {
   useEffect(() => {
@@ -41,6 +42,9 @@ const Index = () => {
       </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
         <DemoDataGrid />
+      </Col>
+      <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
+        <DemoForm />
       </Col>
     </Row>
   );

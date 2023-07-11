@@ -1,6 +1,6 @@
 import { CommonButton, CommonDataGrid, CommonTooltip, DisplayBox } from "@components/CommonComponent";
 import type { ColumnsType } from "@components/CommonComponent";
-import { Divider } from "antd";
+import { Collapse } from "antd";
 import { v4 as uuidv4 } from "uuid";
 
 const DemoDataGrid = () => {
@@ -115,32 +115,52 @@ const DemoDataGrid = () => {
 
   return (
     <DisplayBox title={"Data grid"} isOpen={false}>
-      <Divider>Pagination client</Divider>
-      <CommonDataGrid
-        rowKey={"id"}
-        dataSource={data}
-        columns={columns}
-        rowSelection={{
-          type: "checkbox",
-          //selectedRowKeys
-          onChange: (selectedRowKeys: any, selectedRows: any) => {
-            console.log({ selectedRowKeys, selectedRows });
+      <Collapse
+        items={[
+          {
+            key: "grid1",
+            label: "Pagination client",
+            forceRender: true,
+            children: (
+              <>
+                <CommonDataGrid
+                  rowKey={"id"}
+                  dataSource={data}
+                  columns={columns}
+                  rowSelection={{
+                    type: "checkbox",
+                    //selectedRowKeys
+                    onChange: (selectedRowKeys: any, selectedRows: any) => {
+                      console.log({ selectedRowKeys, selectedRows });
+                    },
+                  }}
+                />
+              </>
+            ),
           },
-        }}
-      />
-      <Divider>Pagination Api</Divider>
-      <CommonDataGrid
-        rowKey={"id"}
-        //rowKey={obj => obj.id}
-        paginationType="api"
-        dataSource={data}
-        columns={columns}
-        pagination={{
-          onChange: (page: number, pageSize: number) => console.log({ page, pageSize }),
-          pageSize: 10,
-          total: 2000,
-          current: 5,
-        }}
+          {
+            key: "grid2",
+            label: "Pagination api",
+            forceRender: true,
+            children: (
+              <>
+                <CommonDataGrid
+                  rowKey={"id"}
+                  //rowKey={obj => obj.id}
+                  paginationType="api"
+                  dataSource={data}
+                  columns={columns}
+                  pagination={{
+                    onChange: (page: number, pageSize: number) => console.log({ page, pageSize }),
+                    pageSize: 10,
+                    total: 2000,
+                    current: 5,
+                  }}
+                />
+              </>
+            ),
+          },
+        ]}
       />
     </DisplayBox>
   );

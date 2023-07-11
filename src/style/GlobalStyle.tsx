@@ -46,6 +46,18 @@ body {
     }
   }
 }
+
+.form-footer {
+  text-align: right;
+
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  
+  button {
+    margin-left: 5px;
+  }
+}
 `;
 
 export default GlobalStyle;

@@ -10,17 +10,21 @@ import ValidTooltip from "./ValidTooltip";
 interface CustomProps extends FormHTMLAttributes<HTMLFormElement> {
   errors?: any;
   watch?: any;
+  focusFirstElement?: boolean;
 }
 
-const Form = ({ errors, watch, ...props }: CustomProps) => {
+const Form = ({ errors, watch, focusFirstElement, ...props }: CustomProps) => {
   const refNameForm = useRef<string>(uuidv4());
   const refClickedElement = useRef<any>(null);
 
-  useFocusFirstElement(refNameForm.current);
+  if (focusFirstElement) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useFocusFirstElement(refNameForm.current);
+  }
   useFocusError(refNameForm.current, errors);
   useConsoleLog(watch);
 
-  const onClickElementForm = (e: any) => {
+  const onTouchElementForm = (e: any) => {
     const element = e.target;
 
     if (element.tagName === "BUTTON") {
@@ -43,7 +47,14 @@ const Form = ({ errors, watch, ...props }: CustomProps) => {
   };
 
   return (
-    <form name={refNameForm.current} autoComplete="off" {...props} onClick={onClickElementForm} onSubmit={onSubmit} />
+    <form
+      name={refNameForm.current}
+      autoComplete="off"
+      {...props}
+      onMouseEnter={onTouchElementForm}
+      onClick={onTouchElementForm}
+      onSubmit={onSubmit}
+    />
   );
 };
 
@@ -56,7 +67,7 @@ interface CustomPropsFormItem {
 Form.Item = (props: CustomPropsFormItem) => {
   return (
     <>
-      <Label>{props.label}</Label>
+      <Label required={props.required}>{props.label}</Label>
       <ValidTooltip>{props.valid}</ValidTooltip>
       <div className={props.valid ? "form-item-valid" : ""}>{props.children}</div>
     </>
@@ -68,4 +79,5 @@ export default Form;
 Form.defaultProps = {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   watch: () => {},
+  focusFirstElement: true,
 };

@@ -101,6 +101,7 @@ const renderOptions = (fieldValue: string, data: Array<any>, columnOptions: Arra
 //#endregion
 
 const Select = forwardRef(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ fieldValue, datalist, columnOptions, isCheckAll, onChange, ...props }: CustomProps, ref: any) => {
     //#region Hooks
     const { t } = useTranslation(["select"]);
@@ -135,7 +136,6 @@ const Select = forwardRef(
           datalist={datalist}
           columnOptions={columnOptions}
           {...props}
-          ref={ref}
           onChange={customOnChange}
         />
       );
@@ -143,7 +143,6 @@ const Select = forwardRef(
 
     return (
       <StaticSelect
-        ref={ref}
         {...props}
         onChange={customOnChange}
         dropdownRender={
@@ -207,7 +206,7 @@ const LazySelect = ({ fieldValue, datalist, columnOptions, ...props }: any) => {
     <AntdSelect
       style={{ width: "100%", ...props.style }}
       onSearch={onSearch}
-      notFoundContent={fetching ? <Spin size="small" /> : null}
+      notFoundContent={fetching ? <div style={{textAlign: "center"}}><Spin size="small" /> </div>: null}
       {...props}
       filterOption={false}
     >

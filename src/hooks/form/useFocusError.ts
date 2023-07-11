@@ -5,12 +5,9 @@ export default function useFocusError(formName: string, errors: any) {
   useEffect(() => {
     if (!_.isEmpty(errors)) {
       try {
-        const firstFieldError = Object.keys(errors).reduce(
-          (field: string, a: any) => {
-            return errors[field] ? field : a;
-          },
-          ""
-        );
+        const firstFieldError = Object.keys(errors).reduce((field: string, a: any) => {
+          return errors[field] ? field : a;
+        }, "");
 
         let element: any;
         if (firstFieldError) {
@@ -20,21 +17,23 @@ export default function useFocusError(formName: string, errors: any) {
               document,
               null,
               XPathResult.FIRST_ORDERED_NODE_TYPE,
-              null
+              null,
             ).singleNodeValue;
+            element.focus();
           } catch (error) {
             element = document.evaluate(
               `//form[@name="${formName}"]//*[@name="${firstFieldError}"]`,
               document,
               null,
               XPathResult.FIRST_ORDERED_NODE_TYPE,
-              null
+              null,
             ).singleNodeValue;
+            element.focus();
           }
-
-          element.focus();
         }
-      } catch (errors) { /* empty */ }
+      } catch (errors) {
+        /* empty */
+      }
     }
   }, [errors]);
 }

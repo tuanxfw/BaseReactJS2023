@@ -3,7 +3,9 @@
   "appFooter": "@Base 2023",
 
   "validate": {
-    "notEmpty": "Không được để trống!"
+    "notEmpty": "Không được để trống!",
+    "maxLength": "Không được vượt quá {length} ký tự!",
+    "maxByte": "Không vượt quá số lượng ký tự cho phép!"
   },
 
   "message": {

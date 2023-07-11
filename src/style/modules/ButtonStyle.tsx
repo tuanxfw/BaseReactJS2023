@@ -11,6 +11,7 @@ const ButtonStyle = styled.span`
   .iconText.ant-btn {
     background: ${getColor("button.background")};
     color: ${getColor("button.fontColor")};
+    min-width: 40px;
   }
   .icon.ant-btn:disabled,
   .text.ant-btn:disabled,
@@ -33,20 +34,6 @@ const ButtonStyle = styled.span`
   }
   .actionTable.ant-btn:disabled {
     opacity: 0.2;
-  }
-
-  @media only screen and (max-width: 500px) {
-    .iconText {
-      padding: 0px 0px 0px 5px;
-
-      .ant-btn-icon {
-        margin-inline-end: 0px;
-      }
-
-      span:nth-child(2) {
-        display: none;
-      }
-    }
   }
 `;
 
