@@ -37,7 +37,10 @@ const ModalStyle = styled.div`
     }
 
     .ant-modal-body {
-      padding: 8px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 5px;
+      padding-right: 5px;
     }
 
     .modal-footer {

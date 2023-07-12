@@ -64,7 +64,6 @@ const DemoForm = () => {
             <Form />
           </Col>
           <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
-            <hr />
             <CommonButton onClick={onOpenModal}>Form with modal</CommonButton>
           </Col>
         </Row>
@@ -198,6 +197,7 @@ const Form = () => {
           </Col>
 
           <Col className="form-footer" {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
+            <hr />
             <CommonButton btnType="iconText" icon={<i className="fa-solid fa-floppy-disk"></i>} htmlType="submit">
               Submit
             </CommonButton>
@@ -338,6 +338,7 @@ const FormWithModal = (props: any) => {
           </Col>
 
           <Col className="form-footer" {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
+            <hr />
             <CommonButton btnType="text" htmlType="submit">
               Save
             </CommonButton>

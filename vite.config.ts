@@ -25,9 +25,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
         {
           find: "@components",
-          replacement: fileURLToPath(
-            new URL("./src/components", import.meta.url)
-          ),
+          replacement: fileURLToPath(new URL("./src/components", import.meta.url)),
         },
         {
           find: "@routes",
@@ -39,9 +37,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
         {
           find: "@constants",
-          replacement: fileURLToPath(
-            new URL("./src/constants", import.meta.url)
-          ),
+          replacement: fileURLToPath(new URL("./src/constants", import.meta.url)),
         },
         {
           find: "@redux",
@@ -57,9 +53,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
         {
           find: "@interface",
-          replacement: fileURLToPath(
-            new URL("./src/interface", import.meta.url)
-          ),
+          replacement: fileURLToPath(new URL("./src/interface", import.meta.url)),
         },
       ],
     },

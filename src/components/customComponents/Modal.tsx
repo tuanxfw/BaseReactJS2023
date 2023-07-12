@@ -25,7 +25,7 @@ const Modal = (Component: React.ComponentType) => {
     const draggleRef = useRef<HTMLDivElement>(null);
     const idRef = useRef("modal" + uuidv4());
 
-    const onClose = (e: any) => {
+    const onClose = () => {
       const xpath = `//*[@id="${idRef.current}"]//button[contains(@class, "close-modal")]`;
       const element: any = document.evaluate(
         xpath,
