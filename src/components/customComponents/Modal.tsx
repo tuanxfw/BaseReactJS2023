@@ -6,6 +6,7 @@ import type { DraggableData, DraggableEvent } from "react-draggable";
 import ModalStyle from "@style/modules/ModalStyle";
 import { v4 as uuidv4 } from "uuid";
 import i18n from "@locales/i18n";
+import { ResponsiveConst } from "@constants/constants";
 interface CustomProps extends ModalProps {
   propsContent: any;
 }
@@ -82,7 +83,11 @@ const Modal = (Component: React.ComponentType) => {
         onCancel={onClose}
         footer={[]}
         modalRender={(modal) => (
-          <Draggable disabled={disabled} bounds={bounds} onStart={(event, uiData) => onStart(event, uiData)}>
+          <Draggable
+            disabled={window.innerWidth < ResponsiveConst.md || disabled}
+            bounds={bounds}
+            onStart={(event, uiData) => onStart(event, uiData)}
+          >
             <ModalStyle id={idRef.current} ref={draggleRef}>
               {modal}
             </ModalStyle>
