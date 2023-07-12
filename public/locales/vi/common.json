@@ -19,7 +19,8 @@
   "confirm": {
     "title": "Xác nhận",
     "yes": "Đồng ý",
-    "cancel": "Hủy"
+    "cancel": "Hủy",
+    "confirmWhenClose": "Dữ liệu đã bị thay đổi bạn có chắc chắn muốn thoát?"
   },
 
   "button": {

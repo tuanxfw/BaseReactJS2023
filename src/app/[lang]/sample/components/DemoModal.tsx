@@ -5,10 +5,14 @@ const DemoModal = () => {
   const [modal, setModal] = useState<any>(null);
 
   const onClick = () => {
-    const options = {};
+    const propsContent = {
+      onClose: () => {
+        setModal(null);
+      },
+    };
 
     const Modal = CommonModal(Content1);
-    setModal(<Modal title="Test" width={"1000px"} options={options} />);
+    setModal(<Modal title="Test" width={"1000px"} propsContent={propsContent} />);
   };
 
   return (
@@ -25,19 +29,23 @@ const DemoModal = () => {
 
 export default DemoModal;
 
-const Content1 = ({ closeModal }: any) => {
+const Content1 = (props: any) => {
   const [modal, setModal] = useState<any>(null);
 
   const onClick = () => {
-    const options = {};
+    const propsContent = {
+      onClose: () => {
+        setModal(null);
+      },
+    };
 
     const Modal = CommonModal(Content2);
-    setModal(<Modal title="Test" width={"300px"} options={options} />);
+    setModal(<Modal title="Test" width={"300px"} propsContent={propsContent} />);
   };
 
   const onClose = () => {
     alert("onClose");
-    closeModal();
+    props.onClose();
   };
 
   return (
@@ -64,7 +72,7 @@ const Content1 = ({ closeModal }: any) => {
   );
 };
 
-const Content2 = ({ closeModal }: any) => {
+const Content2 = (props: any) => {
   return (
     <>
       <div>
@@ -72,7 +80,7 @@ const Content2 = ({ closeModal }: any) => {
       </div>
       <hr />
       <div style={{ textAlign: "right" }}>
-        <CommonButton className="close-modal" btnType="text" onClick={closeModal}>
+        <CommonButton className="close-modal" btnType="text" onClick={props.onClose}>
           Close
         </CommonButton>
       </div>

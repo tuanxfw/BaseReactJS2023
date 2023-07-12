@@ -5,13 +5,13 @@ import Draggable from "react-draggable";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import ModalStyle from "@style/modules/ModalStyle";
 import { v4 as uuidv4 } from "uuid";
-
+import i18n from "@locales/i18n";
 interface CustomProps extends ModalProps {
-  options: any;
+  propsContent: any;
 }
 
 const Modal = (Component: React.ComponentType) => {
-  const CustomModal = ({ options, title, ...props }: CustomProps) => {
+  const CustomModal = ({ propsContent, title, ...props }: CustomProps) => {
     const [open, setOpen] = useState<boolean>(true);
     const [disabled, setDisabled] = useState(true);
     const [bounds, setBounds] = useState({
@@ -24,7 +24,7 @@ const Modal = (Component: React.ComponentType) => {
     const draggleRef = useRef<HTMLDivElement>(null);
     const idRef = useRef("modal" + uuidv4());
 
-    const onClose = () => {
+    const onClose = (e: any) => {
       const xpath = `//*[@id="${idRef.current}"]//button[contains(@class, "close-modal")]`;
       const element: any = document.evaluate(
         xpath,
@@ -62,6 +62,7 @@ const Modal = (Component: React.ComponentType) => {
     return (
       <AntdModal
         maskClosable={false}
+        destroyOnClose={true}
         title={
           <div
             className="modal-title"
@@ -89,11 +90,28 @@ const Modal = (Component: React.ComponentType) => {
         )}
         {...props}
       >
-        <Component {...options} closeModal={close} />
+        <Component {...propsContent} />
       </AntdModal>
     );
   };
   return CustomModal;
 };
+
+const confirmClose = (isDataChange: boolean, funcCallBack: () => void) => {
+  if (!isDataChange) {
+    funcCallBack();
+    return;
+  }
+
+  AntdModal.confirm({
+    title: i18n.t("common:confirm.title") as string,
+    content: i18n.t("common:confirm.confirmWhenClose") as string,
+    onOk() {
+      funcCallBack();
+    },
+  });
+};
+
+Modal.confirmClose = confirmClose;
 
 export default Modal;

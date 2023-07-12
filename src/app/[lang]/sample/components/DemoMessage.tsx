@@ -1,9 +1,4 @@
-import {
-  CommonButton,
-  CommonConfirm,
-  showMessage,
-  DisplayBox,
-} from "@components/CommonComponent";
+import { CommonButton, CommonConfirm, showMessage, DisplayBox } from "@components/CommonComponent";
 
 const DemoMessage = () => {
   const onClick = (event: any) => {
@@ -38,6 +33,7 @@ const DemoMessage = () => {
       <hr />
 
       <CommonConfirm
+        disabled={false}
         description={"Bạn có chắc chắn muốn làm việc ấy?"}
         onConfirm={() =>
           showMessage({

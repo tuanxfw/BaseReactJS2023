@@ -124,7 +124,7 @@ const CustomTimePicker = ({ commonOnchange, ...props }: any) => {
 };
 
 const CustomDatePicker = ({ commonOnchange, ...props }: any) => {
-  const [value, setValue] = useState<Dayjs | null | undefined>(props.value);
+  const [value, setValue] = useState<Dayjs | null | undefined>(null);
 
   useEffect(() => {
     setValue(dateUtil.stringToDate(props.value, format.date.input));
@@ -151,7 +151,7 @@ const CustomDatePicker = ({ commonOnchange, ...props }: any) => {
 };
 
 const CustomDateTimePicker = ({ commonOnchange, ...props }: any) => {
-  const [value, setValue] = useState<Dayjs | null | undefined>(props.value);
+  const [value, setValue] = useState<Dayjs | null | undefined>(null);
 
   useEffect(() => {
     setValue(dateUtil.stringToDate(props.value, format.datetime.input));
@@ -179,7 +179,7 @@ const CustomDateTimePicker = ({ commonOnchange, ...props }: any) => {
 };
 
 const CustomWeekPicker = ({ commonOnchange, ...props }: any) => {
-  const [value, setValue] = useState<Dayjs | null | undefined>(props.value);
+  const [value, setValue] = useState<Dayjs | null | undefined>(null);
 
   useEffect(() => {
     setValue(dateUtil.stringToDate(props.value, format.week.input));
@@ -213,7 +213,7 @@ const CustomWeekPicker = ({ commonOnchange, ...props }: any) => {
 };
 
 const CustomMonthPicker = ({ commonOnchange, ...props }: any) => {
-  const [value, setValue] = useState<Dayjs | null | undefined>(props.value);
+  const [value, setValue] = useState<Dayjs | null | undefined>(null);
 
   useEffect(() => {
     setValue(dateUtil.stringToDate(props.value, format.month.input));
@@ -247,7 +247,7 @@ const CustomMonthPicker = ({ commonOnchange, ...props }: any) => {
 };
 
 const CustomQuarterPicker = ({ commonOnchange, ...props }: any) => {
-  const [value, setValue] = useState<Dayjs | null | undefined>(props.value);
+  const [value, setValue] = useState<Dayjs | null | undefined>(null);
 
   useEffect(() => {
     setValue(dateUtil.stringToDate(props.value, format.quarter.input));
@@ -281,7 +281,7 @@ const CustomQuarterPicker = ({ commonOnchange, ...props }: any) => {
 };
 
 const CustomYearPicker = ({ commonOnchange, ...props }: any) => {
-  const [value, setValue] = useState<Dayjs | null | undefined>(props.value);
+  const [value, setValue] = useState<Dayjs | null | undefined>(null);
 
   useEffect(() => {
     setValue(dateUtil.stringToDate(props.value, format.year.input));

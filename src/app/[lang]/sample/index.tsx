@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { authen, author } from "@routes/privateRoutes";
+import { authen } from "@routes/privateRoutes";
 import DemoButton from "./components/DemoButton";
 import DemoMessage from "./components/DemoMessage";
 import DemoLoading from "./components/DemoLoading";
@@ -50,7 +50,7 @@ const Index = () => {
   );
 };
 
-export default authen(author(Index));
+export default authen(Index);
 
 interface MyStore {
   myStore: number;
