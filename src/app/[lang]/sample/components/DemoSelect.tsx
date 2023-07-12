@@ -245,7 +245,7 @@ const DemoSelect = () => {
               xs: 24,
             }}
           >
-            <CommonLabel>Tree select</CommonLabel>
+            <CommonLabel>Tree</CommonLabel>
             <CommonTree
               treeData={treeData}
               fieldOption={{
