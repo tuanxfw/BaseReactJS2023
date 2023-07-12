@@ -111,7 +111,7 @@ const confirmClose = (isDataChange: boolean, funcCallBack: () => void) => {
   AntdModal.confirm({
     title: i18n.t("common:confirm.title") as string,
     content: i18n.t("common:confirm.confirmWhenClose") as string,
-    onOk() {
+    onOk: () => {
       funcCallBack();
     },
   });
