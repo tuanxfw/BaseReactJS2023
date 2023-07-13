@@ -50,7 +50,6 @@ const TextArea = forwardRef(
       <Input.TextArea
         ref={ref}
         {...props}
-        value={_.toString(value)}
         onBlur={customOnBlur}
         onChange={customOnChange}
         onKeyDown={customOnKeyDown}

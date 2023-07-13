@@ -10,39 +10,25 @@ import {
 const DemoInput = () => {
   return (
     <>
-      <DisplayBox title={"Input"} isOpen={false}>
+      <DisplayBox title={"Input"} isOpen={true}>
         <Row>
-          <Col
-            className="col-space"
-            {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
-          >
+          <Col className="col-space" {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}>
             <CommonLabel>Text</CommonLabel>
             <CommonInputText />
           </Col>
-          <Col
-            className="c"
-            {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
-          >
+          <Col className="c" {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}>
             <CommonLabel>Number</CommonLabel>
             <CommonInputNumber />
           </Col>
-          <Col
-            className="col-space"
-            {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
-          >
+          <Col className="col-space" {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}>
             <CommonLabel>TextArea</CommonLabel>
             <CommonTextArea rows={3} />
           </Col>
-          {/* <Col
-            className="col-space"
-            {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}
-          >
-            <CommonLabel>Password</CommonLabel>
-            <CommonInputPassword autoComplete="off"/>
-          </Col> */}
         </Row>
       </DisplayBox>
     </>
   );
 };
 export default DemoInput;
+
+

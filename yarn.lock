@@ -1518,6 +1518,18 @@
     "@react-hook/event" "^1.2.1"
     "@react-hook/throttle" "^2.2.0"
 
+"@react-input/core@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@react-input/core/-/core-1.0.2.tgz#07facc90cab12dc35fe6f82b3269bd60cd76197d"
+  integrity sha512-UEw70ywxGz1bC6KcLWBUdDgshG288zcTVwz3qZsve1vfve1bBWykglobaiMH+YmJRmfhPnxZ1emGnQDE/6sueA==
+
+"@react-input/mask@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@react-input/mask/-/mask-1.0.14.tgz#8ce262bfb19cd48fedf0afb352a7c1f23dfd9781"
+  integrity sha512-7Cq1eAm1UqkSkx+lSIvddsqsH2SXUn+UyLERoSqoeEc91oiA2m+FI5iH83c32YkKc//9PQaQKPU21xYvuxaKgg==
+  dependencies:
+    "@react-input/core" "^1.0.1"
+
 "@reduxjs/toolkit@^1.9.5":
   version "1.9.5"
   resolved "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-1.9.5.tgz"

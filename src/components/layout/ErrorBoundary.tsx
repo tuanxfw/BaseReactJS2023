@@ -1,5 +1,5 @@
 import ErrorBoundaryStyle from "@style/modules/ErrorBoundaryStyle";
-import { Card } from "antd";
+import { Card, Typography } from "antd";
 import React from "react";
 
 class ErrorBoundary extends React.Component<any, any> {
@@ -26,18 +26,12 @@ class ErrorBoundary extends React.Component<any, any> {
       return (
         <ErrorBoundaryStyle>
           <Card
-            title={
-              <span
-                title={`Error: ${this.state.error?.message}`}
-              >{`Error: ${this.state.error?.message}`}</span>
-            }
+            title={<span title={`Error: ${this.state.error?.message}`}>{`Error: ${this.state.error?.message}`}</span>}
           >
             <Card.Grid style={{ width: "100%" }}>
-              {this.state.error?.stack}
+              <Typography.Text>{this.state.error?.stack}</Typography.Text>
             </Card.Grid>
-            <Card.Grid style={{ width: "100%" }}>
-              {this.state.error?.componentStack}
-            </Card.Grid>
+            <Card.Grid style={{ width: "100%" }}>{this.state?.errorInfo?.componentStack}</Card.Grid>
           </Card>
         </ErrorBoundaryStyle>
       );

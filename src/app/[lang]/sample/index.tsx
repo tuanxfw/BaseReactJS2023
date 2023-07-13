@@ -11,6 +11,7 @@ import DemoDataGrid from "./components/DemoDataGrid";
 import { useEffect } from "react";
 import { create } from "zustand";
 import DemoForm from "./components/DemoForm";
+import DemoLib from "./components/DemoLib";
 
 const Index = () => {
   useEffect(() => {
@@ -19,6 +20,9 @@ const Index = () => {
 
   return (
     <Row>
+      <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
+        <DemoLib />
+      </Col>
       <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
         <DemoButton />
       </Col>

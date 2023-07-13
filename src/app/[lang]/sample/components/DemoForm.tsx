@@ -58,7 +58,7 @@ const DemoForm = () => {
   return (
     <>
       {modal}
-      <DisplayBox title={"Form"} isOpen={true}>
+      <DisplayBox title={"Form"} isOpen={false}>
         <Row>
           <Col {...{ xxl: 24, xl: 24, lg: 24, md: 24, sm: 24, xs: 24 }}>
             <Form />
