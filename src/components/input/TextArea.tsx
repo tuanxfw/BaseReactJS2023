@@ -3,10 +3,11 @@ import { Input } from "antd";
 import type { TextAreaProps } from "antd/es/input/TextArea";
 import _ from "lodash";
 
-interface CustomProps extends TextAreaProps {
+interface CustomProps extends Omit<TextAreaProps, "value"> {
   autoTrim?: boolean;
   autoUpper?: boolean;
   autoLower?: boolean;
+  value?: string | null;
 }
 
 const TextArea = forwardRef(
@@ -49,6 +50,7 @@ const TextArea = forwardRef(
       <Input.TextArea
         ref={ref}
         {...props}
+        value={props.value || props.value === "" ? _.toString(props.value) : undefined}
         onBlur={customOnBlur}
         onChange={customOnChange}
         onKeyDown={customOnKeyDown}
