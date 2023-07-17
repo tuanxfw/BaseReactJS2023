@@ -24,14 +24,14 @@ function getRedirectUrl() {
 }
 
 function getUrlLogin() {
-  const template = VITE_AUTH_URL_API + LOGIN.replaceAll("{realm}", VITE_REALM);
+  const template = VITE_AUTH_URL_API + LOGIN.replace("{realm}", VITE_REALM);
 
   return template;
 }
 
 function getUrlUserInfo() {
   const template =
-    VITE_AUTH_URL_API + USER_INFO.replaceAll("{realm}", VITE_REALM);
+    VITE_AUTH_URL_API + USER_INFO.replace("{realm}", VITE_REALM);
 
   return template;
 }
@@ -41,9 +41,9 @@ function getUrlLoginSSO(redirectUrl = window.location.href) {
 
   const template =
     VITE_AUTH_URL_API +
-    LOGIN_SSO.replaceAll("{realm}", VITE_REALM)
-      .replaceAll("{clientId}", VITE_CLIENT)
-      .replaceAll("{redirectUrl}", redirectUrl);
+    LOGIN_SSO.replace("{realm}", VITE_REALM)
+      .replace("{clientId}", VITE_CLIENT)
+      .replace("{redirectUrl}", redirectUrl);
 
   return template;
 }
@@ -51,16 +51,16 @@ function getUrlLoginSSO(redirectUrl = window.location.href) {
 function getUrlLogoutSSO() {
   const template =
     VITE_AUTH_URL_API +
-    LOGOUT_SSO.replaceAll("{realm}", VITE_REALM)
-      .replaceAll("{idTokenHint}", localStoreUtil.getData("token")["id_token"])
-      .replaceAll("{redirectUrl}", window.location.href);
+    LOGOUT_SSO.replace("{realm}", VITE_REALM)
+      .replace("{idTokenHint}", localStoreUtil.getData("token")["id_token"])
+      .replace("{redirectUrl}", window.location.href);
 
   return template;
 }
 
 function getUrlUserManager() {
   const template =
-    VITE_AUTH_URL_API + USER_MANAGER.replaceAll("{realm}", VITE_REALM);
+    VITE_AUTH_URL_API + USER_MANAGER.replace("{realm}", VITE_REALM);
 
   return template;
 }
