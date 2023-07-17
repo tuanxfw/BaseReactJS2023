@@ -16,7 +16,7 @@ const DemoInput = () => {
             <CommonLabel>Text</CommonLabel>
             <CommonInputText />
           </Col>
-          <Col className="c" {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}>
+          <Col className="col-space" {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}>
             <CommonLabel>Number</CommonLabel>
             <CommonInputNumber />
           </Col>
