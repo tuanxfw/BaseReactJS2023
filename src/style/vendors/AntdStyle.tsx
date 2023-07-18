@@ -1,3 +1,4 @@
+import { ResponsiveConst } from "@constants/constants";
 import { createGlobalStyle } from "styled-components";
 
 const AntdStyle = createGlobalStyle`
@@ -28,6 +29,16 @@ const AntdStyle = createGlobalStyle`
             .ant-collapse-content-box {
                 //padding-block: 0px !important;
                 padding: 0px;
+            }
+        }
+    }
+
+    .ant-modal-wrap {
+        overflow-x: hidden !important;
+
+        @media only screen and (max-width: ${ResponsiveConst.md}px) {
+            .ant-modal {
+                top: 10px;
             }
         }
     }

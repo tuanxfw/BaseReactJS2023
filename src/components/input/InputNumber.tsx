@@ -32,7 +32,7 @@ InputNumber.defaultProps = {
   thousandSeparator: Format.NUMBER_SEPARATOR.THOUSAND,
   fieldValue: "value",
   customInput: Input,
-  onChange: (value) => console.log(value),
+  onChange: (value) => console.debug(value),
 };
 
 export const exceptionChar =

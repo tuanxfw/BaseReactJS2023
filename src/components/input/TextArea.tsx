@@ -65,5 +65,5 @@ TextArea.defaultProps = {
   autoTrim: true,
   autoUpper: false,
   autoLower: false,
-  onChange: (value) => console.log(value),
+  onChange: (value) => console.debug(value),
 };

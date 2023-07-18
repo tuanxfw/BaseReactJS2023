@@ -36,6 +36,7 @@ const DataGridStyle = styled.div`
   .pagination-client {
     display: flex;
     justify-content: center;
+    padding-inline-start: 0px;
   }
 
   .total-field {

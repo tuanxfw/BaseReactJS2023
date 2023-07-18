@@ -1,3 +1,4 @@
+import { ResponsiveConst } from "@constants/constants";
 import sizeLayout from "@style/abstracts/SizeLayout";
 import getColor from "@style/themes/Color";
 import styled from "styled-components";
@@ -66,7 +67,7 @@ const HeaderStyle = styled.div`
     }
   }
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: ${ResponsiveConst.sm}px) {
     .center-header {
       display: flex;
       justify-content: center;

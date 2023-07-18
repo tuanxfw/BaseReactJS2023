@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { useTranslation } from "react-i18next";
 import { CommonTooltip } from "@components/CommonComponent";
+import { ResponsiveConst } from "@constants/constants";
 
 interface CustomProps extends TableProps<any> {
   paginationType?: "client" | "api";
@@ -66,11 +67,16 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
             index = index + pagination.pageSize * pagination.current;
           }
 
-          return <CommonTooltip>{column.render ? column.render(cell, row, index) : cell}</CommonTooltip>;
+          return (
+            <CommonTooltip title={window.innerWidth < ResponsiveConst.md ? cell : ""}>
+              {column.render ? column.render(cell, row, index) : cell}
+            </CommonTooltip>
+          );
         },
         ellipsis: {
           showTitle: false,
         },
+        fixed: window.innerWidth < ResponsiveConst.md ? null : column.fixed,
       };
 
       result.push(item);

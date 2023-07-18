@@ -10,7 +10,7 @@ import {
 const DemoInput = () => {
   return (
     <>
-      <DisplayBox title={"Input"} isOpen={true}>
+      <DisplayBox title={"Input"} isOpen={false}>
         <Row>
           <Col className="col-space" {...{ xxl: 6, xl: 6, lg: 6, md: 12, sm: 12, xs: 24 }}>
             <CommonLabel>Text</CommonLabel>

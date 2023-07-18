@@ -64,6 +64,7 @@ const Modal = (Component: React.ComponentType) => {
       <AntdModal
         maskClosable={false}
         destroyOnClose={true}
+        {...props}
         title={
           <div
             className="modal-title"
@@ -93,7 +94,6 @@ const Modal = (Component: React.ComponentType) => {
             </ModalStyle>
           </Draggable>
         )}
-        {...props}
       >
         <Component {...propsContent} />
       </AntdModal>
