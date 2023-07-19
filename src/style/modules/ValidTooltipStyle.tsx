@@ -9,13 +9,14 @@ const ValidTooltipStyle = styled.div`
     bottom: 0%;
     //top: 0%;
     z-index: 5;
-    background-color: rgb(255, 0, 0);
+    background-color: #cc0033;
     color: white;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: #999 2px 2px 3px;
-    padding: 0px 5px;
-    font-family: "Tahoma" !important;
+    padding: 2px 10px;
+    font-family: "Helvetica" !important;
     font-size: 13px;
+    font-weight: bold;
   }
 
   .tooltip-validate-content:after {
@@ -26,7 +27,7 @@ const ValidTooltipStyle = styled.div`
     margin-left: 0px;
     border-width: 5px;
     border-style: solid;
-    border-color: red transparent transparent transparent;
+    border-color: #cc0033 transparent transparent transparent;
   }
 `;
 

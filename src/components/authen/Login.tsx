@@ -36,7 +36,8 @@ const Login = () => {
       const tokenData = await authn.mutateAsync(data);
 
       if (!tokenData) {
-        throw new Error(t("common:errors.exception") as string);
+        //throw new Error(t("common:errors.exception") as string);
+        return;
       }
       localStoreUtil.setToken(tokenData);
 
