@@ -83,7 +83,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       port: Number(env.VITE_PORT),
     },
     build: {
-      sourcemap: command === "build",
+      sourcemap: false,
+      minify: true,
     },
   };
 });
