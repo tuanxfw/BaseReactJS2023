@@ -8,7 +8,9 @@ import dictionary from "@locales/dictionary";
 import { useTranslation } from "react-i18next";
 import preval from "preval.macro";
 
-function Footer() {
+const buildTime = preval`module.exports = new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear() + "." + new Date().getHours() + "." + new Date().getMinutes() + "." + new Date().getSeconds();`;
+
+const Footer = () => {
   const params: Params = useParams();
 
   const { t } = useTranslation(["common"]);
@@ -33,8 +35,7 @@ function Footer() {
       <Layout.Footer>
         <div className="info-field">
           <span>
-            {t("appFooter")} v
-            {preval`module.exports = new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear() + "." + new Date().getHours() + "." + new Date().getMinutes() + "." + new Date().getSeconds();`}
+            {t("appFooter")} v{buildTime}
           </span>
         </div>
         <div className="lang-field">
@@ -55,6 +56,6 @@ function Footer() {
       </Layout.Footer>
     </FooterStyle>
   );
-}
+};
 
 export default Footer;
