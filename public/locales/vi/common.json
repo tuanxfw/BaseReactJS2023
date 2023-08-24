@@ -1,6 +1,6 @@
 {
   "appTitle": "Base 2023",
-  "appFooter": "@Base 2023",
+  "appFooter": "@Base",
 
   "validate": {
     "notEmpty": "Không được để trống!",

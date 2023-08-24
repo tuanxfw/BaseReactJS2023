@@ -6,6 +6,7 @@ import type { Params } from "react-router-dom";
 import FooterStyle from "@style/layout/FooterStyle";
 import dictionary from "@locales/dictionary";
 import { useTranslation } from "react-i18next";
+import preval from "preval.macro";
 
 function Footer() {
   const params: Params = useParams();
@@ -24,17 +25,17 @@ function Footer() {
   };
 
   const onChangeLang = ({ key }: any) => {
-    window.location.href = window.location.pathname.replace(
-      _.toString(params.lang),
-      key
-    );
+    window.location.href = window.location.pathname.replace(_.toString(params.lang), key);
   };
 
   return (
     <FooterStyle>
       <Layout.Footer>
         <div className="info-field">
-          <span>{t("appFooter")}</span>
+          <span>
+            {t("appFooter")} v
+            {preval`module.exports = new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear() + "." + new Date().getHours() + "." + new Date().getMinutes() + "." + new Date().getSeconds();`}
+          </span>
         </div>
         <div className="lang-field">
           <Dropdown
