@@ -86,5 +86,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       sourcemap: false,
       minify: true,
     },
+    define: {
+      __APP_VERSION__: JSON.stringify(new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear() + "." + new Date().getHours() + "." + new Date().getMinutes() + "." + new Date().getSeconds()),
+    },
   };
 });

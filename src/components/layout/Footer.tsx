@@ -6,9 +6,8 @@ import type { Params } from "react-router-dom";
 import FooterStyle from "@style/layout/FooterStyle";
 import dictionary from "@locales/dictionary";
 import { useTranslation } from "react-i18next";
-import preval from "preval.macro";
 
-const buildTime = preval`module.exports = new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear() + "." + new Date().getHours() + "." + new Date().getMinutes() + "." + new Date().getSeconds();`;
+const buildTime = __APP_VERSION__;
 
 const Footer = () => {
   const params: Params = useParams();
