@@ -28,7 +28,7 @@ const filterSelectOption = (input: any, event: any) => {
   return (
     _.toString(event.value) === "header" ||
     _.toString(event.label).toLowerCase().includes(input.toLowerCase()) ||
-    _.toString(event.value).toLowerCase().includes(input.toLowerCase())
+    _.toString(event.key).toLowerCase().includes(input.toLowerCase())
   );
 };
 
@@ -70,8 +70,13 @@ const renderOptions = (fieldValue: string, data: Array<any>, columnOptions: Arra
     for (let i = 0; i < data.length; i++) {
       const row = data[i];
 
+      let key = "";
+      _.map(columnOptions, (col) => {
+        key = key + row[col.fieldName];
+      });
+
       children.push(
-        <Option key={uuidv4()} value={row[fieldValue]} item={row}>
+        <Option key={uuidv4() + key} value={row[fieldValue]} item={row}>
           <Row className="select-options" key={uuidv4()}>
             {_.map(columnOptions, (col) => {
               return (
@@ -206,7 +211,13 @@ const LazySelect = ({ fieldValue, datalist, columnOptions, ...props }: any) => {
     <AntdSelect
       style={{ width: "100%", ...props.style }}
       onSearch={onSearch}
-      notFoundContent={fetching ? <div style={{textAlign: "center"}}><Spin size="small" /> </div>: null}
+      notFoundContent={
+        fetching ? (
+          <div style={{ textAlign: "center" }}>
+            <Spin size="small" />{" "}
+          </div>
+        ) : null
+      }
       {...props}
       filterOption={false}
     >
@@ -218,9 +229,9 @@ const LazySelect = ({ fieldValue, datalist, columnOptions, ...props }: any) => {
 export default Select;
 
 Select.defaultProps = {
+  datalist: [],
   showSearch: true,
   allowClear: true,
-  showArrow: true,
   maxTagCount: "responsive",
   filterOption: filterSelectOption,
 };
