@@ -8,12 +8,8 @@ import ErrorBoundary from "@components/layout/ErrorBoundary";
 import NotFound from "@components/layout/NotFound";
 import dayjs from "dayjs";
 import i18n, { checkLocale, getCurrentLocale } from "@locales/i18n";
-import { CommonNotification, CommonProcessLoading } from "@components/CommonComponent";
-// const ReactQueryDevtoolsProduction = lazy(() =>
-//   import("react-query/devtools/development").then((d) => ({
-//     default: d.ReactQueryDevtools,
-//   }))
-// );
+import { CommonNotification, CommonProcessLoading, showMessage } from "@components/CommonComponent";
+
 
 const ReactQueryDevtoolsProduction = lazy(() =>
   import("@tanstack/react-query-devtools/build/lib/index.prod.js").then((d) => ({
@@ -31,17 +27,17 @@ const queryClient = new QueryClient({
       refetchInterval: false, //tự refetch sau 1 khoảng thời gian
       refetchIntervalInBackground: false, //refetch lại ngay cả khi không focus vào ứng dụng
       staleTime: 1000 * 60 * 5, //thời gian cache
-      onError: (error) => {
+      onError: (error: any) => {
         console.error(error);
-        //showError(error.message);
+        showMessage({ type: "error", message: error?.message });
       },
     },
     mutations: {
       retry: false,
       retryDelay: 2000,
-      onError: (error) => {
+      onError: (error: any) => {
         console.error(error);
-        //showError(error.message);
+        showMessage({ type: "error", message: error?.message });
       },
     },
   },

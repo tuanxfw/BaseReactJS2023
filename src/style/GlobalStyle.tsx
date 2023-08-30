@@ -26,6 +26,11 @@ body {
   width: 100%
 }
 
+.page-space {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .col-space {
   padding-left: 5px;
   padding-right: 5px;

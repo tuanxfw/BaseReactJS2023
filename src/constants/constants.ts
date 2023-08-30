@@ -4,12 +4,16 @@ import { IAppConfig } from "@interface/Config";
 export const AppConfig: IAppConfig = {
   VITE_MODE: import.meta.env.VITE_MODE,
   VITE_PUBLIC_URL: import.meta.env.VITE_PUBLIC_URL,
-  VITE_REALM: import.meta.env.VITE_REALM,
-  VITE_CLIENT: import.meta.env.VITE_CLIENT,
+  VITE_APP: import.meta.env.VITE_APP,
   VITE_AUTH_URL_API: import.meta.env.VITE_AUTH_URL_API,
   VITE_BUSINESS_URL_API: import.meta.env.VITE_BUSINESS_URL_API,
-  VITE_CLIENT_SECRET: import.meta.env.VITE_CLIENT_SECRET,
   ...(window as any).globalConfig,
+};
+
+export const Component = {
+  DATATABLE: {
+    PAGE_SIZE_DEFAULT: 20,
+  },
 };
 
 export const Format = {
