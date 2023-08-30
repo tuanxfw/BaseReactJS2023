@@ -47,7 +47,7 @@ function setData(key: string, value: any) {
 }
 
 function getData(key: string) {
-  const store: any = localStorage.getItem(AppConfig.VITE_CLIENT);
+  const store: any = localStorage.getItem(AppConfig.VITE_CLIENT) || "{}";
 
   const result = _.get(JSON.parse(_.toString(store)), key, {});
 
