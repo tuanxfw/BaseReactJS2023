@@ -39,6 +39,7 @@ const HeaderStyle = styled.div`
     display: inherit;
     width: 100%;
     text-align: left;
+    margin-right: 20px;
 
     .logo-app {
       height: 40px;
@@ -52,11 +53,13 @@ const HeaderStyle = styled.div`
   }
 
   .right-header {
-    text-align: left;
-    display: -webkit-box;
-    margin-right: 25px;
+    text-align: right;
+    padding-right: 10px;
 
     .ant-dropdown-trigger {
+      position: absolute;
+      right: 0px;
+      padding-right: 10px;
       display: -webkit-box;
       cursor: pointer;
 
