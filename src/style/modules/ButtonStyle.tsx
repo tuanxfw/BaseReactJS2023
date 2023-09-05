@@ -5,6 +5,9 @@ const ButtonStyle = styled.span`
   .ant-btn > * {
     pointer-events: none;
   }
+  .ant-btn:hover {
+    color: ${getColor("button.fontColor")} !important;
+  }
 
   .icon.ant-btn,
   .text.ant-btn,
