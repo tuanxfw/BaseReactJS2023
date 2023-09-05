@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { IAppConfig } from "@interface/Config";
+import { IAppConfig } from "@interface/model/Config";
 
 export const AppConfig: IAppConfig = {
   VITE_MODE: import.meta.env.VITE_MODE,

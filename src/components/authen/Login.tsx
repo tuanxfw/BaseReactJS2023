@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { localStoreUtil, yup, yupResolver } from "@utils/commonUtil";
 import { useForm, Controller } from "react-hook-form";
 import { useLogin } from "@hooks/fetch/useAuth";
-import { IMenuItem, IMenuSub } from "@interface/Menu";
+import { IMenuItem, IMenuSub } from "@interface/model/Menu";
 
 const Login = () => {
   const { t } = useTranslation(["login", "common"]);

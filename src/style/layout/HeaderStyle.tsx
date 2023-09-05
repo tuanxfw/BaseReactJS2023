@@ -52,9 +52,9 @@ const HeaderStyle = styled.div`
   }
 
   .right-header {
-    text-align: right;
+    text-align: left;
     display: -webkit-box;
-    padding-right: 10px;
+    margin-right: 25px;
 
     .ant-dropdown-trigger {
       display: -webkit-box;
