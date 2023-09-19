@@ -7,7 +7,7 @@ const ModalStyle = styled.div`
 
     .modal-title {
       width: 100%;
-      height: 35px;
+      min-height: 35px;
       cursor: move;
 
       background: ${getColor("modal.header.background")};
@@ -18,6 +18,7 @@ const ModalStyle = styled.div`
         width: 100%;
         height: 100%;
         padding-top: 5px;
+        padding-bottom: 5px;
         padding-left: 10px;
         padding-right: 10px;
       }

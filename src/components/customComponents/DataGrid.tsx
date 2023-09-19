@@ -8,49 +8,64 @@ import { v4 as uuidv4 } from "uuid";
 import { useTranslation } from "react-i18next";
 import { CommonTooltip } from "@components/CommonComponent";
 import { ResponsiveConst } from "@constants/constants";
+import { useEffect, useRef } from "react";
 
 interface CustomProps extends TableProps<any> {
   paginationType?: "client" | "api";
 }
 
 //#region function
+const genItemPaging = (
+  page: number,
+  type: "page" | "prev" | "next" | "jump-prev" | "jump-next",
+  element: React.ReactNode,
+) => {
+  let resultElement = null;
 
+  switch (type) {
+    case "prev":
+      resultElement = (
+        <button className="ant-pagination-item-link">
+          <i className="fa-solid fa-backward" />
+        </button>
+      );
+      break;
+
+    case "next":
+      resultElement = (
+        <button className="ant-pagination-item-link">
+          <i className="fa-solid fa-forward" />
+        </button>
+      );
+      break;
+
+    default:
+      resultElement = element;
+      break;
+  }
+
+  return resultElement;
+};
 //#endregion
 
 const DataGrid = ({ paginationType, ...props }: CustomProps) => {
   const { t } = useTranslation(["dataGrid"]);
 
-  const genItemPaging = (
-    page: number,
-    type: "page" | "prev" | "next" | "jump-prev" | "jump-next",
-    element: React.ReactNode,
-  ) => {
-    let resultElement = null;
+  const idTable = useRef<string>(props.id || uuidv4());
 
-    switch (type) {
-      case "prev":
-        resultElement = (
-          <button className="ant-pagination-item-link">
-            <i className="fa-solid fa-backward" />
-          </button>
-        );
-        break;
+  useEffect(() => {
+    //reload scroll
+    const element: any = document.evaluate(
+      `//*[@id="${idTable.current}"]//div[@class="ant-table-body"]`,
+      document,
+      null,
+      XPathResult.FIRST_ORDERED_NODE_TYPE,
+      null,
+    ).singleNodeValue;
 
-      case "next":
-        resultElement = (
-          <button className="ant-pagination-item-link">
-            <i className="fa-solid fa-forward" />
-          </button>
-        );
-        break;
-
-      default:
-        resultElement = element;
-        break;
-    }
-
-    return resultElement;
-  };
+    element.scrollTop = element.scrollTop + 0;
+    element.scrollLeft = element.scrollLeft + 0;
+  }, [props.dataSource, props.columns]);
 
   const genColumns = (columnsData: ColumnsType | undefined) => {
     const result: ColumnsType = [];
@@ -88,7 +103,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
   if (paginationType === "api") {
     return (
       <DataGridStyle>
-        <Table {...props} columns={genColumns(props.columns)} pagination={false}></Table>
+        <Table {...props} id={idTable.current} columns={genColumns(props.columns)} pagination={false}></Table>
         <ul className="pagination-client ant-pagination ant-table-pagination ant-table-pagination-center">
           <Pagination
             size="default"
@@ -115,6 +130,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
     <DataGridStyle>
       <Table
         {...props}
+        id={idTable.current}
         columns={genColumns(props.columns)}
         pagination={
           props.pagination !== false

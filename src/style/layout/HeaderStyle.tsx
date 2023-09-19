@@ -30,8 +30,8 @@ const HeaderStyle = styled.div`
     }
 
     button:hover {
-      color: ${getColor("header.fontColor")};
-      border-color: ${getColor("header.fontColor")};
+      color: ${getColor("header.fontColor")} !important;
+      border-color: ${getColor("header.fontColor")} !important;
     }
   }
 

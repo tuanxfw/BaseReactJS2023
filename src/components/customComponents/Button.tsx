@@ -31,7 +31,7 @@ const Button = forwardRef(({ btnType, ...props }: CustomProps, ref: any) => {
   // "icon" | "text"
   return (
     <ButtonStyle>
-      <AntdButton ref={ref} {...props} className={(props.className || "") + ` ${btnType}`} />
+      <AntdButton ref={ref} {...props} className={btnType + " " + (props.className || "")} />
     </ButtonStyle>
   );
 });

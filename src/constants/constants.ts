@@ -12,7 +12,7 @@ export const AppConfig: IAppConfig = {
 
 export const Component = {
   DATATABLE: {
-    PAGE_SIZE_DEFAULT: 20,
+    PAGE_SIZE_DEFAULT: 10,
   },
 };
 

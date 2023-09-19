@@ -6,6 +6,7 @@ import useFocusFirstElement from "@hooks/form/useFocusFirstElement";
 import useConsoleLog from "@hooks/form/useConsoleLog";
 import Label from "./Label";
 import ValidTooltip from "./ValidTooltip";
+import _ from "lodash";
 
 interface CustomProps extends FormHTMLAttributes<HTMLFormElement> {
   errors?: any;
@@ -32,7 +33,7 @@ const Form = ({ errors, watch, focusFirstElement, ...props }: CustomProps) => {
     }
   };
 
-  const onSubmit = (e: any) => {
+  const onSubmit = _.debounce((e: any) => {
     const fakeEvent = { ...e };
     if (!e?.nativeEvent?.submitter) {
       //handle IOS
@@ -44,7 +45,7 @@ const Form = ({ errors, watch, focusFirstElement, ...props }: CustomProps) => {
     } else {
       if (props.onSubmit) props.onSubmit(e);
     }
-  };
+  }, 500);
 
   return (
     <form
@@ -53,7 +54,10 @@ const Form = ({ errors, watch, focusFirstElement, ...props }: CustomProps) => {
       {...props}
       onMouseEnter={onTouchElementForm}
       onClick={onTouchElementForm}
-      onSubmit={onSubmit}
+      onSubmit={(e: any) => {
+        e.preventDefault();
+        onSubmit(e);
+      }}
     />
   );
 };
