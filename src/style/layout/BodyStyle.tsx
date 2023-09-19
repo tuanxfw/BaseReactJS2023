@@ -9,7 +9,6 @@ const BodyStyle = styled.div`
     padding-right: 5px;
 
     overflow-y: auto;
-    overflow-x: hidden;
   }
 `;
 

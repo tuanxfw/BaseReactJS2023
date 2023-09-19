@@ -13,6 +13,7 @@ const ToolTipStyle = styled.div`
   transition: visibility 0.2s, opacity 0.2s linear;
   font-family: "Tahoma" !important;
   font-size: 13px;
+  overflow-wrap: anywhere;
 `;
 
 export default ToolTipStyle;
