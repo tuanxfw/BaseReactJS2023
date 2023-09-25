@@ -2,6 +2,7 @@ import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
 const ProcessLoadingStyle = styled.div`
+  cursor: wait;
   position: absolute;
   height: 100vh;
   width: 100vw;
