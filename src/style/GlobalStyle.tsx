@@ -2,9 +2,17 @@ import { createGlobalStyle } from "styled-components";
 import getColor from "@style/themes/Color";
 
 const GlobalStyle = createGlobalStyle`
+html {
+  overflow-x: hidden;
+}
+
+*[hidden] {
+  display: none;
+}
+
 body {
-    //height: 100vh;
-    margin: 0px;
+  //height: 100vh;
+  margin: 0px;
 }
 
 ::-webkit-scrollbar-track {
@@ -52,6 +60,13 @@ body {
   }
 }
 
+.ant-select-disabled .ant-col, 
+.ant-input-affix-wrapper:disabled,
+.ant-picker-input input:disabled , 
+.ant-input:disabled {
+  color: #505050 !important;
+}
+
 .form-footer {
   text-align: right;
 
@@ -60,6 +75,14 @@ body {
   
   button {
     margin-left: 5px;
+  }
+}
+
+.action-header-table {
+
+  button {
+    margin-right: 5px;
+    margin-bottom: 5px;
   }
 }
 `;

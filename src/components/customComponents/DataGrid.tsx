@@ -4,11 +4,12 @@ import type { TableProps, PaginationProps } from "antd";
 import type { ColumnsType as ColumnsTypeAntd } from "antd/es/table";
 import _ from "lodash";
 import { v4 as uuidv4 } from "uuid";
-
 import { useTranslation } from "react-i18next";
-import { CommonTooltip } from "@components/CommonComponent";
+import { CommonButton, CommonConfirm, CommonTooltip } from "@components/CommonComponent";
 import { ResponsiveConst } from "@constants/constants";
 import { useEffect, useRef } from "react";
+import i18n from "@locales/i18n";
+import { numberUtil } from "@utils/commonUtil";
 
 interface CustomProps extends TableProps<any> {
   paginationType?: "client" | "api";
@@ -64,7 +65,8 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
     ).singleNodeValue;
 
     element.scrollTop = element.scrollTop + 0;
-    element.scrollLeft = element.scrollLeft + 0;
+    element.scrollLeft = element.scrollLeft - 1;
+    element.scrollLeft = element.scrollLeft + 2;
   }, [props.dataSource, props.columns]);
 
   const genColumns = (columnsData: ColumnsType | undefined) => {
@@ -115,7 +117,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
             showTotal={(total) => (
               <div className="total-field">
                 <div>
-                  {total} {t("footer.record")}
+                  {numberUtil.formatToNumberString(total)} {t("footer.record")}
                 </div>
               </div>
             )}
@@ -145,7 +147,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
                 showTotal: (total) => (
                   <div className="total-field">
                     <div>
-                      {total} {t("footer.record")}
+                      {numberUtil.formatToNumberString(total)} {t("footer.record")}
                     </div>
                   </div>
                 ),
@@ -167,4 +169,74 @@ DataGrid.defaultProps = {
   paginationType: "client",
   size: "small",
   bordered: true,
+};
+
+export const genCellAction = (options: any) => (cell: any, row: any) => {
+  // {
+  //     onView: null,
+  //     onInsert: null,
+  //     onClone: null,
+  //     onUpdate: null,
+  //     onDelete: null,
+  // }
+
+  return (
+    <div key={uuidv4()}>
+      {options?.onView ? (
+        <CommonButton
+          title={i18n.t("common:button.view") as string}
+          btnType="actionTable"
+          icon={<i className="fa-regular fa-eye" />}
+          onClick={options.onView(row)}
+        />
+      ) : (
+        <></>
+      )}
+
+      {options?.onInsert ? (
+        <CommonButton
+          title={i18n.t("common:button.insert") as string}
+          btnType="actionTable"
+          icon={<i className="fa-solid fa-plus" />}
+          onClick={options.onInsert(row)}
+        />
+      ) : (
+        <></>
+      )}
+
+      {options?.onClone ? (
+        <CommonButton
+          title={i18n.t("common:button.clone") as string}
+          btnType="actionTable"
+          icon={<i className="fa-regular fa-clone" />}
+          onClick={options.onClone(row)}
+        />
+      ) : (
+        <></>
+      )}
+
+      {options?.onUpdate ? (
+        <CommonButton
+          title={i18n.t("common:button.update") as string}
+          btnType="actionTable"
+          icon={<i className="fa-regular fa-pen-to-square" />}
+          onClick={options.onUpdate(row)}
+        />
+      ) : (
+        <></>
+      )}
+
+      {options?.onDelete ? (
+        <CommonConfirm description={i18n.t("common:message.confirmDelete") as string} onConfirm={options.onDelete(row)}>
+          <CommonButton
+            title={i18n.t("common:button.delete") as string}
+            btnType="actionTable"
+            icon={<i className="fa-regular fa-trash-can" />}
+          />
+        </CommonConfirm>
+      ) : (
+        <></>
+      )}
+    </div>
+  );
 };

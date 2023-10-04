@@ -229,7 +229,7 @@ const handleException = (config: ConfigRequest) => async (error: any) => {
     logout();
   } else {
     console.info(error);
-    throw new Error(_.get({ error }, "error.response.data.message", i18n.t("common:errors.exception")));
+    throw new Error(error?.response?.data?.message || error?.message || (i18n.t("common:errors.exception") as string));
   }
 };
 

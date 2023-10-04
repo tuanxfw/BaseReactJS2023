@@ -16,6 +16,13 @@ export const Component = {
   },
 };
 
+export const Action = {
+  VIEW: "VIEW",
+  INSERT: "INSERT",
+  UPDATE: "UPDATE",
+  DELETE: "DELETE",
+};
+
 export const Format = {
   DATE_TIME_FORMAT: {
     TIME: "HH:mm:ss",

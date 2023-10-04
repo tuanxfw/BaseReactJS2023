@@ -138,7 +138,7 @@ const Select = forwardRef(
       return (
         <LazySelect
           fieldValue={fieldValue}
-          datalist={datalist}
+          datalist={datalist || []}
           columnOptions={columnOptions}
           {...props}
           onChange={customOnChange}
@@ -171,7 +171,7 @@ const Select = forwardRef(
             : undefined
         }
       >
-        {renderOptions(fieldValue, datalist, columnOptions)}
+        {renderOptions(fieldValue, datalist || [], columnOptions)}
       </StaticSelect>
     );
   },
@@ -201,7 +201,7 @@ const LazySelect = ({ fieldValue, datalist, columnOptions, ...props }: any) => {
       const newData = await datalist(value);
 
       setFetching(false);
-      setData(newData);
+      setData(newData || []);
     };
 
     return _.debounce(loadOptions, 1000);
