@@ -5,7 +5,7 @@ import type { SpinProps } from "antd";
 const WrappedLoading = (props: SpinProps) => {
   return (
     <WrappedLoadingStyle>
-      <Spin {...props} />
+      <Spin {...props} style={{cursor: "wait"}} />
     </WrappedLoadingStyle>
   );
 };
