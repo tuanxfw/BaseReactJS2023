@@ -154,7 +154,7 @@ const DemoDataGrid = () => {
                     onChange: (page: number, pageSize: number) => console.log({ page, pageSize }),
                     pageSize: 10,
                     total: 2000,
-                    current: 5,
+                    current: 2,
                   }}
                 />
               </>

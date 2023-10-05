@@ -1,5 +1,5 @@
 import DataGridStyle from "@style/modules/DataGridStyle";
-import { Table, Pagination } from "antd";
+import { Table } from "antd";
 import type { TableProps, PaginationProps } from "antd";
 import type { ColumnsType as ColumnsTypeAntd } from "antd/es/table";
 import _ from "lodash";
@@ -81,7 +81,7 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
 
           const pagination = props.pagination as PaginationProps;
           if (paginationType === "api" && pagination.current && pagination.current > 1 && pagination.pageSize) {
-            index = index + pagination.pageSize * pagination.current;
+            index = index + pagination.pageSize * (pagination.current - 1);
           }
 
           return (
@@ -101,32 +101,6 @@ const DataGrid = ({ paginationType, ...props }: CustomProps) => {
 
     return result;
   };
-
-  if (paginationType === "api") {
-    return (
-      <DataGridStyle>
-        <Table {...props} id={idTable.current} columns={genColumns(props.columns)} pagination={false}></Table>
-        <ul className="pagination-client ant-pagination ant-table-pagination ant-table-pagination-center">
-          <Pagination
-            size="default"
-            responsive
-            showSizeChanger
-            showLessItems
-            itemRender={genItemPaging}
-            defaultCurrent={1}
-            showTotal={(total) => (
-              <div className="total-field">
-                <div>
-                  {numberUtil.formatToNumberString(total)} {t("footer.record")}
-                </div>
-              </div>
-            )}
-            {...props.pagination}
-          />
-        </ul>
-      </DataGridStyle>
-    );
-  }
 
   return (
     <DataGridStyle>
