@@ -9,7 +9,6 @@ function compareString(
     | "notContains"
     | "startWith"
     | "endWith"
-    | "" = ""
 ) {
   let result = false;
 

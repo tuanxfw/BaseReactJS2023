@@ -5,7 +5,7 @@ import CommonLayout from "@components/layout/CommonLayout";
 const Login = lazy(() => import("@components/authen/Login"));
 import { localStoreUtil } from "@utils/commonUtil";
 import _ from "lodash";
-import { IMenuItem } from "@interface/Menu";
+import { IMenuItem } from "@interface/model/Menu";
 
 export const authen = (Component: React.ComponentType) => {
   const Authen = (props: any) => {
