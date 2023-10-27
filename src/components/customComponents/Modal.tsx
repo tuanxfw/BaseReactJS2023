@@ -87,7 +87,7 @@ const Modal = (Component: React.ComponentType) => {
           <Draggable
             disabled={window.innerWidth < ResponsiveConst.md || disabled}
             bounds={bounds}
-            onStart={(event, uiData) => onStart(event, uiData)}
+            onStart={onStart}
           >
             <ModalStyle id={idRef.current} ref={draggleRef}>
               {modal}

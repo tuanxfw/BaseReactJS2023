@@ -1,3 +1,4 @@
+export { default as keycloakUtil } from "@utils/pack/keycloak";
 export { default as localStoreUtil } from "@utils/pack/localStore";
 export { default as objectUtil } from "@utils/pack/object";
 export { default as dateUtil } from "@utils/pack/date";
