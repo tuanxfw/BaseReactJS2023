@@ -12,6 +12,11 @@ function Header() {
 
   const actions: MenuProps["items"] = [
     {
+      key: "reloadWeb",
+      icon: <i className="fa-solid fa-rotate"></i>,
+      label: t("reloadWeb"),
+    },
+    {
       key: "changePassword",
       icon: <i className="fa-solid fa-key"></i>,
       label: t("changePassword"),
@@ -27,6 +32,10 @@ function Header() {
   const logout = () => {
     localStoreUtil.clearData();
   };
+
+  const reloadWeb = () => {
+    window.location.reload();
+  };
   //#endregion
 
   //#region Event
@@ -34,6 +43,10 @@ function Header() {
     switch (key) {
       case "logout":
         logout();
+        break;
+
+      case "reloadWeb":
+        reloadWeb();
         break;
 
       default:

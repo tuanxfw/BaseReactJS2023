@@ -33,7 +33,44 @@ const Login = () => {
   //#region Method
   const login = async (data: any) => {
     try {
-      const tokenData = await authn.mutateAsync(data);
+      //const tokenData = await authn.mutateAsync(data);
+      const tokenData = {
+        "access_token": "456",
+        "refresh_token": "123",
+        "token_type": "Bearer",
+        "expires_in": 86399,
+        "refresh_expires_in": 493261,
+        "user_info": {
+            "id": "191d4abf4a59464d905d210792fb96e2",
+            "username": "admin",
+            "tax_code": null,
+            "full_name": "VETC",
+            "email": "vetc@vetc.com.vn",
+            "phone": "0983051325",
+            "type": "TVAN",
+            "roles": [
+                {
+                    "username": "admin",
+                    "role_code": "ADMIN"
+                },
+                {
+                    "username": "admin",
+                    "role_code": "INTEGRATOR"
+                }
+            ],
+            "orgs": {
+                "id": null,
+                "code": null,
+                "name": null,
+                "tax_code": null,
+                "transfer_type": null,
+                "email": null,
+                "phone": null,
+                "address": null,
+                "type": "DN"
+            }
+        }
+    };
 
       if (!tokenData) {
         //throw new Error(t("common:errors.exception") as string);
