@@ -58,6 +58,7 @@ export const closeTooltip = () => {
     return;
   }
 
+  tooltip.innerHTML = "";
   tooltip.style.visibility = "hidden";
   tooltip.style.opacity = "0";
 };
