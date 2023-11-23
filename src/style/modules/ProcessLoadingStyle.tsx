@@ -6,7 +6,7 @@ const ProcessLoadingStyle = styled.div`
   position: absolute;
   height: 100vh;
   width: 100vw;
-  z-index: 1000;
+  z-index: 3000;
 
   display: flex;
   justify-content: center;
