@@ -54,6 +54,14 @@ function getData(key: string) {
   return result;
 }
 
+function removeData(key: string) {
+  const store: any = JSON.parse(_.toString(localStorage.getItem(AppConfig.VITE_CLIENT)) || "{}");
+
+  delete store[key];
+
+  localStorage.setItem(AppConfig.VITE_CLIENT, JSON.stringify(store));
+}
+
 function clearData() {
   localStorage.setItem(AppConfig.VITE_CLIENT, "");
 
@@ -67,6 +75,7 @@ const localStore = {
   setData,
   getData,
   clearData,
+  removeData,
 };
 
 export default localStore;

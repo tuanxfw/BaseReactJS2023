@@ -7,6 +7,7 @@ import _ from "lodash";
 import queryString from "query-string";
 import { keycloakUtil, localStoreUtil, objectUtil } from "@utils/commonUtil";
 import { AppConfig, Format, ServicesConst } from "@constants/constants";
+import { LOGOUT } from "@constants/appPath";
 
 interface ConfigRequest {
   queryRes?: string;
@@ -127,16 +128,32 @@ function login(path: string, data: any) {
   return axios.post(url, data, requestOptions).then(handleRestApi(configDefault)).catch(handleException(configDefault));
 }
 
-// eslint-disable-next-line no-unused-vars
-function logout() {
-  // const config = genConfig({});
-  // let url = genApiUrl(path);
-  // showCircleLoading();
-  // const requestOptions = {
-  //     timeout: config.timeout,
-  //     headers: config.headers
-  // };
-  // return axios.post(url, data, requestOptions).then(handleRestApi(callBackFunc)).catch(handleException);
+function logout(path = "", data: any = null) {
+  if (_.isEmpty(path)) {
+    path = AppConfig.VITE_AUTH_URL_API + LOGOUT;
+  }
+
+  if (_.isEmpty(data)) {
+    data = {
+      client_id: AppConfig.VITE_CLIENT,
+      client_secret: AppConfig.VITE_CLIENT_SECRET,
+      refresh_token: localStoreUtil.getToken()?.["refresh_token"] || ""
+    }
+  }
+
+  const config = genConfig({});
+  const url = genApiUrl(path);
+  
+  openProcessLoading();
+
+  const requestOptions = {
+      timeout: config.timeout,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+  };
+
+  return axios.post(url, data, requestOptions).then(handleRestApi(configDefault)).catch(handleException(configDefault));
 }
 //#endregion
 
