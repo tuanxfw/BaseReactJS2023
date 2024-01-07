@@ -1,4 +1,5 @@
 import { Component } from "@constants/constants";
+import { IPagingTable } from "@interface/model/PagingApi";
 import _ from "lodash";
 
 function isEmptyValue(value: any) {
@@ -13,25 +14,28 @@ function isEmptyValue(value: any) {
 }
 
 function mapPayloadPaging(input: any) {
-  const defaultPaging: any = {
+  const defaultPaging = {
     page_size: Component.DATATABLE.PAGE_SIZE_DEFAULT,
-    page_num: 1,
+    total_elements: 1,
   };
 
-  return { ...defaultPaging, ...input};
+  return { ...defaultPaging, ...input };
 }
 
 function mapResponsePaging(input: any) {
-  const { page_size, page_num, total, total_pages, ...data } = input;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { page_size, page_number, total_elements, total_pages, ...rest } = input;
+
+  const data = rest;
+  const pagingInfo: IPagingTable = {
+    total: total_elements || 0,
+    current: page_number || 1,
+    pageSize: page_size || Component.DATATABLE.PAGE_SIZE_DEFAULT,
+  };
 
   const result = {
     data,
-    pagingInfo: {
-      total: total || 0,
-      current: page_num || 1,
-      pageSize: page_size || Component.DATATABLE.PAGE_SIZE_DEFAULT,
-      totalPage: total_pages || 1,
-    },
+    pagingInfo,
   };
 
   return result;
