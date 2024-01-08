@@ -13,13 +13,13 @@ function isEmptyValue(value: any) {
   return !result;
 }
 
-function mapPayloadPaging(input: any) {
-  const defaultPaging = {
-    page_size: Component.DATATABLE.PAGE_SIZE_DEFAULT,
-    total_elements: 1,
+function mapPayloadPaging(input: IPagingTable) {
+  const pagingData = {
+    page_size: input.pageSize || Component.DATATABLE.PAGE_SIZE_DEFAULT ,
+    total_elements: input.total || 1,
   };
 
-  return { ...defaultPaging, ...input };
+  return pagingData;
 }
 
 function mapResponsePaging(input: any) {
