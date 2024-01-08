@@ -15,8 +15,8 @@ function isEmptyValue(value: any) {
 
 function mapPayloadPaging(input: IPagingTable) {
   const pagingData = {
-    page_size: input.pageSize || Component.DATATABLE.PAGE_SIZE_DEFAULT ,
-    total_elements: input.total || 1,
+    "page_size": input.pageSize || Component.DATATABLE.PAGE_SIZE_DEFAULT,
+    "page_number": (input.current || 1) - 1,
   };
 
   return pagingData;
@@ -29,7 +29,7 @@ function mapResponsePaging(input: any) {
   const data = rest;
   const pagingInfo: IPagingTable = {
     total: total_elements || 0,
-    current: page_number || 1,
+    current: (page_number || 0) + 1,
     pageSize: page_size || Component.DATATABLE.PAGE_SIZE_DEFAULT,
   };
 
