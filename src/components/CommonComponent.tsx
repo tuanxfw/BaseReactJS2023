@@ -22,6 +22,8 @@ export { default as CommonButton } from "@components/customComponents/Button";
 export { default as DisplayBox } from "@components/customComponents/DisplayBox";
 export { default as CommonModal } from "@components/customComponents/Modal";
 export { default as CommonDataGrid, genCellAction } from "@components/customComponents/DataGrid";
+export { default as CommonImage } from "@components/customComponents/Image";
+export { default as CommonFieldset } from "@components/customComponents/Fieldset";
 export type { ColumnsType } from "@components/customComponents/DataGrid";
 
 export { default as CommonProcessLoading } from "@components/customComponents/ProcessLoading";

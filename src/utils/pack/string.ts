@@ -3,12 +3,7 @@ import _ from "lodash";
 function compareString(
   targetStr: string,
   str: string,
-  mode:
-    | "equals"
-    | "notEquals"
-    | "notContains"
-    | "startWith"
-    | "endWith"
+  mode: "equals" | "notEquals" | "notContains" | "contains" | "startWith" | "endWith" = "contains",
 ) {
   let result = false;
 
@@ -48,8 +43,8 @@ function getBytesString(value: string) {
   value = _.toString(value);
   const bytes = new Blob([value]).size;
 
-  return bytes
-};
+  return bytes;
+}
 
 const string = {
   compareString,

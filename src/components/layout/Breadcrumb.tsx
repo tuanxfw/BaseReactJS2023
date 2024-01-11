@@ -5,7 +5,7 @@ import type { MenuProps } from "antd";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
-import type { IMenuItem, IMenuSub } from "@interface/Menu";
+import type { IMenuItem, IMenuSub } from "@interface/model/Menu";
 import { AppConfig } from "@constants/constants";
 
 const Breadcrumb = () => {

@@ -11,7 +11,7 @@ export interface sheetDataExport {
 const readXlsx = (file: any, config: XLSX.Sheet2JSONOpts = { header: 2 }, sheetIndex = 0): Promise<any> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsBinaryString(file);
     reader.onload = () => {
       const workbook = XLSX.read(reader.result, { type: "binary" });
 

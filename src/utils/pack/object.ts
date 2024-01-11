@@ -13,10 +13,16 @@ function isEmptyValue(value: any) {
   return !result;
 }
 
+const mapValueToName = (valueField: string, nameField: string) => (listData: any, value: any) => {
+  const record = _.find(listData, (obj) => obj[valueField] === value) || {};
+
+  return record[nameField] || "";
+};
+
 function mapPayloadPaging(input: IPagingTable) {
   const pagingData = {
-    "page_size": input.pageSize || Component.DATATABLE.PAGE_SIZE_DEFAULT,
-    "page_number": (input.current || 1) - 1,
+    page_size: input.pageSize || Component.DATATABLE.PAGE_SIZE_DEFAULT,
+    page_number: (input.current || 1) - 1,
   };
 
   return pagingData;
@@ -45,6 +51,7 @@ const object = {
   isEmptyValue,
   mapPayloadPaging,
   mapResponsePaging,
+  mapValueToName,
 };
 
 export default object;

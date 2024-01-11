@@ -33,7 +33,7 @@ export const Format = {
     QUARTER: "Q",
     YEAR: "YYYY",
     // DATE_ISO_8601: "YYYY-MM-DD",
-    // DATE_TIME_ISO_8601: "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]",
+    // DATE_TIME_ISO_8601: "YYYY-MM-DDTHH:mm:ss",
   },
 
   REGEX: {
