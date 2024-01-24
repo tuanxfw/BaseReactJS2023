@@ -8,7 +8,7 @@ import { Format } from "@constants/constants";
 interface CustomProps extends Omit<NumericFormatProps, "customInput" | "onValueChange" | "onChange"> {
   fieldValue?: "formattedValue" | "value" | "floatValue";
   customInput?: any;
-  onChange?: (value: string | number) => void;
+  onChange?: (value: string | number | any) => void;
 }
 
 const InputNumber = forwardRef(
