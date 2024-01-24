@@ -3,3 +3,4 @@ dist/
 env.d.ts
 *.config.ts
 *.js
+tsconfig.json
