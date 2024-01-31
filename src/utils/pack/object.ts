@@ -14,7 +14,7 @@ function isEmptyValue(value: any) {
 }
 
 const mapValueToName = (valueField: string, nameField: string) => (listData: any, value: any) => {
-  const record = _.find(listData, (obj) => obj[valueField] === value) || {};
+  const record = _.find(listData, (obj) => _.toString(obj[valueField]) === _.toString(value)) || {};
 
   return record[nameField] || "";
 };
