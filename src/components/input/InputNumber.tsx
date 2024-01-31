@@ -21,7 +21,14 @@ const InputNumber = forwardRef(
       }
     };
 
-    return <NumericFormat onValueChange={onValueChange} {...props} />;
+    return (
+      <NumericFormat
+        onValueChange={onValueChange}
+        {...props}
+        decimalSeparator={props.decimalSeparator || undefined}
+        thousandSeparator={props.thousandSeparator || undefined}
+      />
+    );
   },
 );
 
