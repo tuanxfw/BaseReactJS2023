@@ -18,7 +18,7 @@ function setToken(value: any) {
   const currentTimestamp = Math.floor(Date.now() / 1000); //second
 
   store["token"] = value;
-  store["expireSession"] = currentTimestamp + value["refresh_expires_in"];
+  store["expireSession"] = currentTimestamp + value?.["refresh_expires_in"] || 0;
 
   localStorage.setItem(AppConfig.VITE_CLIENT, JSON.stringify(store));
 }
