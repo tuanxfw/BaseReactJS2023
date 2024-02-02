@@ -10,7 +10,7 @@
     "dev:build": "vite build --mode development",
     "uat:start": "env-cmd -f .env.staging vite",
     "uat:build": "tsc && vite build --mode staging",
-    "product:start": "env-cmd -f .env.product vite",
+    "product:start": "env-cmd -f .env.production vite",
     "product:build": "tsc && vite build --mode production",
     "preview": "env-cmd -f .env.local vite preview"
   },
