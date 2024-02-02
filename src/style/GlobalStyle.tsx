@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import getColor from "@style/themes/Color";
+import { AppConfig } from "@constants/constants";
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -84,6 +85,10 @@ body {
     margin-right: 5px;
     margin-bottom: 5px;
   }
+}
+
+.ReactQueryDevtools {
+  display: ${AppConfig.VITE_MODE === "production" ? "none" : "initial"};
 }
 `;
 
