@@ -4,7 +4,9 @@ import { IAppConfig } from "@interface/model/Config";
 export const AppConfig: IAppConfig = {
   VITE_MODE: import.meta.env.VITE_MODE,
   VITE_PUBLIC_URL: import.meta.env.VITE_PUBLIC_URL,
-  VITE_APP: import.meta.env.VITE_APP,
+  VITE_REALM: import.meta.env.VITE_REALM,
+  VITE_CLIENT: import.meta.env.VITE_CLIENT,
+  VITE_CLIENT_SECRET: import.meta.env.VITE_CLIENT_SECRET,
   VITE_AUTH_URL_API: import.meta.env.VITE_AUTH_URL_API,
   VITE_BUSINESS_URL_API: import.meta.env.VITE_BUSINESS_URL_API,
   ...(window as any).globalConfig,

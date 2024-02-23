@@ -1,4 +1,4 @@
-import { LOGIN, LOGIN_SSO, LOGOUT_SSO, USER_MANAGER, USER_INFO } from "@constants/appPath";
+import { LOGIN, LOGIN_SSO, LOGOUT_SSO, USER_MANAGER, USER_INFO, LOGOUT } from "@constants/appPath";
 import { AppConfig } from "@constants/constants";
 import { localStoreUtil } from "@utils/commonUtil";
 
@@ -44,6 +44,14 @@ function getUrlLoginSSO() {
   return template;
 }
 
+function getUrlLogout() {
+  const template =
+    VITE_AUTH_URL_API +
+    LOGOUT.replace("{realm}", VITE_REALM)
+
+  return template;
+}
+
 function getUrlLogoutSSO() {
   const template =
     VITE_AUTH_URL_API +
@@ -66,6 +74,7 @@ const keycloak = {
   getUrlLogin,
   getUrlUserInfo,
   getUrlLoginSSO,
+  getUrlLogout,
   getUrlLogoutSSO,
   getUrlUserManager,
 };

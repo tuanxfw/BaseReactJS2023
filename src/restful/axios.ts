@@ -7,7 +7,6 @@ import _ from "lodash";
 import queryString from "query-string";
 import { keycloakUtil, localStoreUtil, objectUtil } from "@utils/commonUtil";
 import { AppConfig, Format, ServicesConst } from "@constants/constants";
-import { LOGOUT } from "@constants/appPath";
 
 interface ConfigRequest {
   queryRes?: string;
@@ -130,7 +129,7 @@ function login(path: string, data: any) {
 
 function logout(path = "", data: any = null) {
   if (_.isEmpty(path)) {
-    path = AppConfig.VITE_AUTH_URL_API + LOGOUT;
+    path = keycloakUtil.getUrlLogout();
   }
 
   if (_.isEmpty(data)) {

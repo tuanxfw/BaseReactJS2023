@@ -6,9 +6,12 @@ import { useTranslation } from "react-i18next";
 import { AppConfig } from "@constants/constants";
 import { openSidebar } from "@components/layout/Sidebar";
 import { localStoreUtil } from "@utils/commonUtil";
+import { useLogout } from "@hooks/fetch/useAuth";
 
 function Header() {
   const { t } = useTranslation(["header", "common"]);
+
+  const signOut = useLogout();
 
   const actions: MenuProps["items"] = [
     {
@@ -29,7 +32,8 @@ function Header() {
   ];
 
   //#region Method
-  const logout = () => {
+  const logout = async () => {
+    await signOut.mutateAsync();
     localStoreUtil.clearData();
   };
 
