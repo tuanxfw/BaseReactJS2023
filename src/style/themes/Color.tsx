@@ -16,6 +16,10 @@ const vetc = {
     background: "#00a65052",
     fontColor: "#000000",
   },
+  sideBar: {
+    background: "hsla(0, 0%, 99%, 0.95)",
+    fontColor: "#000000",
+  },
   modal: {
     header: {
       background: "#00a651",

@@ -1,5 +1,6 @@
 import { AppConfig } from "@constants/constants";
 import sizeLayout from "@style/abstracts/SizeLayout";
+import getColor from "@style/themes/Color";
 import { createGlobalStyle } from "styled-components";
 
 const SidebarStyle = createGlobalStyle`
@@ -12,11 +13,12 @@ const SidebarStyle = createGlobalStyle`
     background-image: ${`url(${AppConfig.VITE_PUBLIC_URL}/images/background.jpg)`};
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: hsla(0, 0%, 99%, 0.95);
+    background-color: ${getColor("sideBar.background")};
     background-blend-mode: overlay;
-
+    
     .ant-menu{
       background: transparent;
+      color: ${getColor("sideBar.fontColor")};
     }
   }
 
