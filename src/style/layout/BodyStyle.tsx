@@ -1,4 +1,5 @@
 import sizeLayout from "@style/abstracts/SizeLayout";
+import getColor from "@style/themes/Color";
 import styled from "styled-components";
 
 const BodyStyle = styled.div`
@@ -7,7 +8,7 @@ const BodyStyle = styled.div`
     max-width: 100vw;
     padding-left: 5px;
     padding-right: 5px;
-
+    background: ${getColor("body.background")};
     overflow-y: auto;
   }
 `;

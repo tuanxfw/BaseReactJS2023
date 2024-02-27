@@ -9,6 +9,9 @@ const vetc = {
     background: "#00a651",
     fontColor: "#ffffff",
   },
+  body: {
+    background: "#ffffff",
+  },
   footer: {
     background: "#00a65052",
     fontColor: "#000000",
