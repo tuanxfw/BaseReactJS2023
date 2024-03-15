@@ -114,7 +114,7 @@ const Select = forwardRef(
 
     //#region Events
     const customOnChange = (value: any, option: any) => {
-      if (onChange) onChange(value, option?.item);
+      if (onChange) onChange(value || null, option?.item || null);
     };
 
     const onCheckAll = (e: any) => {
